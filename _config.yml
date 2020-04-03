@@ -14,25 +14,24 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 lang: ko
-title: 컴퓨터공학
-email:
-description:
+title: "비움"
+email: likemin0142@gmail.com
+description: 수박 겉이 아닌 수박 속에 집중하자.
 baseurl: # the optional subpath of your site, e.g. "/blog"
-url: # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url: "https://biewoom.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 author:
-  name:
+  name: 유정민
   twitter:
   picture:
 twitter_username:
-github_username:
-logo: # path of site logo, e.g. "/assets/images/logo.png"
+github_username: Biewoom
+logo: "/assets/logo/bw_logo.svg" # path of site logo, e.g. "/assets/images/logo.png"
 search: true
 search_full_content: true
 search_provider: # lunr (default), algolia
 
 # Build settings
 markdown: kramdown
-# theme: "jekyll-theme-basically-basic"
 plugins: # previsously gems
   - jekyll-feed
   - jekyll-seo-tag
@@ -51,23 +50,14 @@ exclude:
   - .bundle
   - .codeclimate.yml
   - .editorconfig
-  - .gitattributes
   - .jekyll-assets-cache
   - .sass-cache
   - .scss-lint.yml
-  - CHANGELOG
   - Gemfile
   - Gemfile.lock
   - LICENSE
   - node_modules
   - Rakefile
-  - README
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - /docs
-  - /example # ignore Basically Basic dev site
 
 # Front Matter Defaults
 defaults:
