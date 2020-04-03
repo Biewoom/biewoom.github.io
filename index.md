@@ -2,7 +2,7 @@
 layout: home
 entry_layout: list
 alt_title: "언제나 처음 배우는 것 처럼"
-image: /assets/images/background/background.jpg
+image: /assets/images/background/background.png
 actions:
   - label: "Algorithm 같이 해요"
     icon: pdf
