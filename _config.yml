@@ -19,6 +19,8 @@ email: likemin0142@gmail.com
 description: 수박 겉이 아닌 수박 속에 집중하자.
 baseurl: # the optional subpath of your site, e.g. "/blog"
 url: "https://biewoom.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+disqus:
+  shortname: basically-basic-theme
 author:
   name: 유정민
   twitter:
@@ -58,12 +60,30 @@ exclude:
   - LICENSE
   - node_modules
   - Rakefile
+#Collections
+
+collections:
+  datastructure:
+    output: true
+    # permalink: /:collection/:path
 
 # Front Matter Defaults
 defaults:
   # _posts
   - scope:
       path: "_posts"
+      type: posts
+    values:
+      layout: post
+      read_time: true
+  - scope:
+      path: "_ps"
+      type: posts
+    values:
+      layout: post
+      read_time: true
+  - scope:
+      path: "_datastructure"
       type: posts
     values:
       layout: post
