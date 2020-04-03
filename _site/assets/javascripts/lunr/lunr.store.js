@@ -10,7 +10,7 @@ var store = [{
         "url": "http://localhost:4000/2020/04/03/Test2.html"
       },{
         "title": "Peanut Butter Cookies",
-        "excerpt":"dddddddddddddddd ","categories": ["kakao 2020"],
+        "excerpt":"dddddddddddddddd ","categories": ["kakao 2020 blind"],
         "tags": [],
-        "url": "http://localhost:4000/kakao%202020/2020/04/03/Trie.html"
+        "url": "http://localhost:4000/kakao%202020%20blind/2020/04/03/Trie.html"
       }]

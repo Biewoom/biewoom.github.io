@@ -17,7 +17,7 @@ lang: ko
 title: "비움"
 email: likemin0142@gmail.com
 description: 수박 겉이 아닌 수박 속에 집중하자.
-baseurl: # the optional subpath of your site, e.g. "/blog"
+baseurl: "/" # the optional subpath of your site, e.g. "/blog"
 url: "https://biewoom.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 disqus:
   shortname: basically-basic-theme
