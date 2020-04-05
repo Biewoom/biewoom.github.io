@@ -34,7 +34,9 @@ google_fonts:
 # pages that have a `title`. Add raw page paths in the order you'd like.
 
 navigation_pages:
-  - ProblemSolving.md
+  - Algorithm.md
   - DataStructures.md
+  - ProblemSolving.md
+  - os.md
   - all_categories.md
   - about.md
