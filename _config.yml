@@ -60,12 +60,10 @@ exclude:
   - LICENSE
   - node_modules
   - Rakefile
-#Collections
 
-collections:
-  datastructure:
-    output: true
-    # permalink: /:collection/:path
+# g-analytic
+g-analytics: UA-162459692-2
+
 
 # Front Matter Defaults
 defaults:
