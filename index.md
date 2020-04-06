@@ -1,7 +1,7 @@
 ---
 layout: home
 entry_layout: list
-alt_title: "언제나 처음처럼"
+alt_title: "항상 생각을 생각합니다."
 image: /assets/images/background/background.jpg
 actions:
   - label: "Algorithm 같이 해요"
