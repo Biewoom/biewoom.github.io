@@ -37,6 +37,6 @@ navigation_pages:
   - Algorithm.md
   - DataStructures.md
   - ProblemSolving.md
-  - os.md
+  # - os.md
   - all_categories.md
   - StudyPhilosophy.md
