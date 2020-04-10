@@ -52,7 +52,7 @@ comments: true
 배운다는 건 학습자가 경험을 통해 **스스로 뇌 속에 스키마 형태의 지식**을 저장하는 행위이다. <br/>
 학습은 활자나 강의를 통해 전달 되는 것이 아니라, **스스로의 뇌를 재구성**하는 행위인 것이다.<br/>
 _-참조: [객관주의 VS 구성주의](https://ddalgiru.tistory.com/9)_<br/>
-![image](../assets/images/spy/shema.jpg){: height="60%" width="60%"}
+![image](../assets/images/spy/shema.JPG){: height="60%" width="60%"}
 
 이 주장은 뇌 신경학에도 근거가 있는 데, 우리가 "배운다" 거나 "기억한다" 라는 행위는<br/>
 뇌의 입장에선 **시냅스들이 새로운 커넥션을 형성하거나 강화하는 행위**라고 한다.<br/>
