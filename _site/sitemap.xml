@@ -50,6 +50,14 @@
     
     
     <url>
+        <loc>http://localhost:4000/plan/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/categories/</loc>
     </url>
     
@@ -75,6 +83,14 @@
     
     <url>
         <loc>http://localhost:4000/ps/coding_test/kakao-2020-blind/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/knowledge/</loc>
     </url>
     
     

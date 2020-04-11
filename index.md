@@ -1,7 +1,7 @@
 ---
 layout: home
 entry_layout: list
-alt_title: "학습을 설계하다."
+alt_title: "생각을 생각하다."
 actions:
   - label: "Algorithm 같이 해요"
     icon: pdf
