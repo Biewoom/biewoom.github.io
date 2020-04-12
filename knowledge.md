@@ -4,8 +4,8 @@ layout: page
 permalink: /knowledge/
 ---
 
-**아직 뇌신경과학계에서도 뇌의 모든 비밀을 알지 못하고, 연구가 진행 중 입니다.**<br/>
-상당 수의 내용이 아래 이론들에서 근거한 **"개인적인 지식관"** 임을 미리 밝힙니다.<br/>
+**아직 뇌신경 과학계에서도 뇌의 모든 것을 알지 못하고, 연구가 진행 중 입니다.**<br/>
+이론적으론 아래 이론들을 근거하고, 상당한 내용은 **"개인적인 지식관"** 입니다.<br/>
 
 ※참고 자료:<br/>
 >* Introduction to The Neuroscience Of Learning - 뇌신경 과학 이론<br/>
@@ -13,7 +13,6 @@ permalink: /knowledge/
 * Metacognition - 메타인지이론 <br/>
 * 극단적 구성주의 - 교육학 이론
 * 객관주의와 구성주의 - 교육학 이론<br/>
-
 
 > -참조 [뇌과학 간단히 알아보기](https://medium.com/neuroscience-in-real-life/introduction-to-neuroscience-of-learning-3dd2042b181b)<br/>
 > -참조 [메타인지이론 간단히 알아보기](https://en.wikipedia.org/wiki/Metacognition)<br/>
