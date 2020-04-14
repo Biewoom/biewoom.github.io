@@ -1,6 +1,6 @@
 ---
   layout: post
-  title: "가사 검색"
+  title: "카카오 테스트: 가사 검색"
   categories:
     - coding test
     - kakao 2020 blind
