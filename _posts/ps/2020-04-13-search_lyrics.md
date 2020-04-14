@@ -8,7 +8,7 @@
     path: /assets/images/PS/2020-kakao-blind/blind.png
     thumbnail: /assets/images/PS/2020-kakao-blind/lyrics.jpg
   comments: true
-  excerpt: 2020-카카오 채용 100% 친절 풀이
+  excerpt: 2020 카카오-채용 100% 친절 풀이
   actions:
     - label: "문제 풀러가기"
       icon: arrow-right
