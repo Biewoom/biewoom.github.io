@@ -5,7 +5,12 @@ var store = [{
         "url": "http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html"
       },{
         "title": "가사 검색",
-        "excerpt":"","categories": ["coding test","kakao 2020 blind"],
+        "excerpt":"핵심 개념:   Trie  [Hash]팁: Code: 풀이는 위의 설명을 참조해서 코드를 직접 보시면서 이해하면 좋겠습니다. ","categories": ["coding test","kakao 2020 blind"],
         "tags": [],
         "url": "http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html"
+      },{
+        "title": "Trie: 검색어의 비밀!",
+        "excerpt":"test ","categories": ["non-linear-ds","advanced"],
+        "tags": [],
+        "url": "http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html"
       }]

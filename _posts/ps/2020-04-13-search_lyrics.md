@@ -14,3 +14,12 @@
       icon: arrow-right
       url: https://programmers.co.kr/learn/courses/30/lessons/60060
 ---
+
+# 핵심 개념:
+1. [Trie]({% link _posts/datastructure/2020-04-14-Trie.md %})
+2. [Hash]
+
+# 팁:
+
+# Code:
+풀이는 위의 설명을 참조해서 코드를 직접 보시면서 이해하면 좋겠습니다.<br/>
