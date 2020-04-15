@@ -24,11 +24,11 @@
 <link rel="canonical" href="http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html" />
 <meta property="og:url" content="http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html" />
 <meta property="og:site_name" content="비움" />
-<meta property="og:image" content="http://localhost:4000/assets/images/ds/non-linear/google.png" />
+<meta property="og:image" content="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-14T00:00:00+09:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logo/bw_logo.svg"},"name":"유정민"},"headline":"Trie: 자동 완성의 비밀!","dateModified":"2020-04-14T00:00:00+09:00","url":"http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html","datePublished":"2020-04-14T00:00:00+09:00","image":{"thumbnail":"/assets/images/ds/non-linear/google.png","url":"http://localhost:4000/assets/images/ds/non-linear/google.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html"},"author":{"@type":"Person","name":"유정민"},"description":"검색어, 채팅의 자동 완성 안에는 어떤 알고리즘을 쓸까?","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logo/bw_logo.svg"},"name":"유정민"},"headline":"Trie: 자동 완성의 비밀!","dateModified":"2020-04-14T00:00:00+09:00","url":"http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html","datePublished":"2020-04-14T00:00:00+09:00","image":{"thumbnail":"/assets/images/ds/non-linear/Trie/google.png","url":"http://localhost:4000/assets/images/ds/non-linear/Trie/google.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html"},"author":{"@type":"Person","name":"유정민"},"description":"검색어, 채팅의 자동 완성 안에는 어떤 알고리즘을 쓸까?","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -205,7 +205,7 @@
     
     
     <div class="intro-image">
-      <img src="/assets/images/ds/non-linear/google.png" alt="Trie: 자동 완성의 비밀!">
+      <img src="/assets/images/ds/non-linear/Trie/google.png" alt="Trie: 자동 완성의 비밀!">
     </div>
   
 
@@ -219,7 +219,7 @@
         
 
         <p class="entry-meta">
-          <span class="byline-item">by 유정민</span><span class="byline-item"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="379 72 16 16"><g><g><path fill="none" d="M380.8,86.7h12.3v-8.8h-12.3V86.7z M389.5,78.8h1.7v1.4h-1.7V78.8z M389.5,81.3h1.7v1.4h-1.7V81.3z M389.5,83.8h1.7v1.4h-1.7V83.8z M386.1,78.8h1.7v1.4h-1.7V78.8z M386.1,81.3h1.7v1.4h-1.7V81.3z M386.1,83.8h1.7v1.4h-1.7V83.8z M382.8,78.8h1.7v1.4h-1.7V78.8z M382.8,81.3h1.7v1.4h-1.7V81.3z M382.8,83.8h1.7v1.4h-1.7V83.8z"/><polygon fill="none" points="384.7 75.1 383.4 75.1 383.4 74.3 380.8 74.3 380.8 76.6 393.2 76.6 393.2 74.3 390.6 74.3 390.6 75.1 389.3 75.1 389.3 74.3 384.7 74.3"/><rect x="382.8" y="78.8" width="1.7" height="1.4"/><rect x="386.1" y="78.8" width="1.7" height="1.4"/><rect x="389.5" y="78.8" width="1.7" height="1.4"/><rect x="382.8" y="81.3" width="1.7" height="1.4"/><rect x="386.1" y="81.3" width="1.7" height="1.4"/><rect x="389.5" y="81.3" width="1.7" height="1.4"/><rect x="382.8" y="83.8" width="1.7" height="1.4"/><rect x="386.1" y="83.8" width="1.7" height="1.4"/><rect x="389.5" y="83.8" width="1.7" height="1.4"/><path d="M383.4,72v1.1h-3.8V88h14.9V73.1h-3.8V72h-1.3v1.1h-4.7V72H383.4z M393.2,86.7h-12.3v-8.8h12.3L393.2,86.7L393.2,86.7z M389.3,74.3v0.8h1.3v-0.8h2.5v2.3h-12.3v-2.3h2.5v0.8h1.3v-0.8H389.3z"/></g></g></svg></span><time datetime="2020-04-14T00:00:00+09:00">April 14, 2020</time></span> <span class="byline-item"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="15 309.7 16 16"><g><path d="M23.9 315.1v3.6c0 .5-.4.9-.9.9s-.9-.4-.9-.9v-3.6h1.8z"/><path d="M30.1 317.7c.5 3.9-2.3 7.5-6.2 7.9-3.9.5-7.5-2.3-7.9-6.2-.5-3.9 2.3-7.5 6.2-7.9v-1.8H24v1.8c1.1.1 2.7.7 3.5 1.4l1.3-1.3 1.3 1.3-1.3 1.3c.5.9 1.2 2.5 1.3 3.5zm-1.8.9c0-2.9-2.4-5.3-5.3-5.3s-5.3 2.4-5.3 5.3 2.4 5.3 5.3 5.3 5.3-2.3 5.3-5.3z"/></g></svg></span>1 min read</span>
+          <span class="byline-item">by 유정민</span><span class="byline-item"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="379 72 16 16"><g><g><path fill="none" d="M380.8,86.7h12.3v-8.8h-12.3V86.7z M389.5,78.8h1.7v1.4h-1.7V78.8z M389.5,81.3h1.7v1.4h-1.7V81.3z M389.5,83.8h1.7v1.4h-1.7V83.8z M386.1,78.8h1.7v1.4h-1.7V78.8z M386.1,81.3h1.7v1.4h-1.7V81.3z M386.1,83.8h1.7v1.4h-1.7V83.8z M382.8,78.8h1.7v1.4h-1.7V78.8z M382.8,81.3h1.7v1.4h-1.7V81.3z M382.8,83.8h1.7v1.4h-1.7V83.8z"/><polygon fill="none" points="384.7 75.1 383.4 75.1 383.4 74.3 380.8 74.3 380.8 76.6 393.2 76.6 393.2 74.3 390.6 74.3 390.6 75.1 389.3 75.1 389.3 74.3 384.7 74.3"/><rect x="382.8" y="78.8" width="1.7" height="1.4"/><rect x="386.1" y="78.8" width="1.7" height="1.4"/><rect x="389.5" y="78.8" width="1.7" height="1.4"/><rect x="382.8" y="81.3" width="1.7" height="1.4"/><rect x="386.1" y="81.3" width="1.7" height="1.4"/><rect x="389.5" y="81.3" width="1.7" height="1.4"/><rect x="382.8" y="83.8" width="1.7" height="1.4"/><rect x="386.1" y="83.8" width="1.7" height="1.4"/><rect x="389.5" y="83.8" width="1.7" height="1.4"/><path d="M383.4,72v1.1h-3.8V88h14.9V73.1h-3.8V72h-1.3v1.1h-4.7V72H383.4z M393.2,86.7h-12.3v-8.8h12.3L393.2,86.7L393.2,86.7z M389.3,74.3v0.8h1.3v-0.8h2.5v2.3h-12.3v-2.3h2.5v0.8h1.3v-0.8H389.3z"/></g></g></svg></span><time datetime="2020-04-14T00:00:00+09:00">April 14, 2020</time></span> <span class="byline-item"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="15 309.7 16 16"><g><path d="M23.9 315.1v3.6c0 .5-.4.9-.9.9s-.9-.4-.9-.9v-3.6h1.8z"/><path d="M30.1 317.7c.5 3.9-2.3 7.5-6.2 7.9-3.9.5-7.5-2.3-7.9-6.2-.5-3.9 2.3-7.5 6.2-7.9v-1.8H24v1.8c1.1.1 2.7.7 3.5 1.4l1.3-1.3 1.3 1.3-1.3 1.3c.5.9 1.2 2.5 1.3 3.5zm-1.8.9c0-2.9-2.4-5.3-5.3-5.3s-5.3 2.4-5.3 5.3 2.4 5.3 5.3 5.3 5.3-2.3 5.3-5.3z"/></g></svg></span>2 min read</span>
         </p>
       
 
@@ -239,53 +239,129 @@
 현실적으로는 프론트, 백, 데이터 프로세싱 등의 다방면의 접근이 필요하지만<br />
 그 중 백에서 사용 되는 모델은 <strong>트라이(Trie)</strong>를 기반으로 하는 것이 많습니다!<br /></p>
 
+<p>이는 트라이의 기능이 검색어를 효율적으로 찾는 것에 도움이 되기 떄문인데요.<br />
+우리는 여기서 Basic 한 Trie에 간단히 대해서 알아보겠습니다.<br /></p>
 <blockquote>
   <p>※ 현재 대부분 기업은 Basic이 아닌 훨씬 최적화, 변형된 트라이를 사용합니다.</p>
 </blockquote>
 
 <h1 id="트라이는-어떤-기능을-하나요">트라이는 어떤 기능을 하나요?</h1>
-
 <p>트라이는 String-search, Substring-search 등을 수행합니다<br />
 이 중 <strong>String-search</strong> 기능을 예로 설명하겠습니다.<br />
-우리는 검색어 관리팀이고, n개 글자의 리스트를 가지고 있다고 합시다.<br />
-가진 리스트는 { ‘한국은행’, ‘한국장학재단’, ‘천조국’, ‘일본’, ‘국물’,…, ‘국뽕’}<br /></p>
+우리는 검색어 관리팀이고, n개 낱말의 리스트를 가지고 있다고 합시다.<br />
+가진 리스트는 <strong>{‘한국은행’, ‘한국만세’, ‘일본’, ‘국장’, ‘국물’,…, ‘국뽕’}</strong><br /></p>
 
-<p>이 때, 한 유저가 기존의 리스트에 ‘국뽕’이라는 글자가 있는 지가 궁금합니다.<br />
-<strong>핵심: 어떻게 하면 리스트에서 이 글자가 있는 지를 효율적으로 알 수 있을까요??</strong><br /></p>
+<p>이 때, 한 유저가 기존의 리스트에 ‘<strong>국뽕</strong>‘이라는 낱말이 있는 지가 궁금합니다.<br />
+<strong>핵심: 어떻게 하면 리스트에서 이 낱말이 있는 지를 효율적으로 알 수 있을까요??</strong><br />
+※ 다음으로 넘어가기 전에 혼자 한 번 고민해봅시다!</p>
 
 <h1 id="brute-force-하게-해봅시다">Brute-force 하게 해봅시다.</h1>
-<p><img src="/assets/images/ds/non-linear/trie-brute-force.png" alt="image" /></p>
+<p><img src="/assets/images/ds/non-linear/Trie/trie-brute-force.png" alt="image" /></p>
 
 <p>어렵게 생각하지 말고 리스트 안의 것 모두를 우리의 Query인 ‘국뽕’과 하나씩 비교합시다<br />
-한국은행과 국뽕을 먼저 비교하고, 다음은 한국장학재단, 다음은 일본 … <br />
-n-1번 까지 있던 모든 글자와는 틀렸다는 것을 확인하고 마지막에서 와서야<br />
-국뽕과 비교를 하게 되고, 이 리스트에는 ‘국뽕’이라는 글자가 발견되었습니다.<br /></p>
+한국은행과 국뽕을 먼저 비교하고, 다음은 한국만세, 다음은 일본 … 등등 <br />
+n-1번 까지 있던 모든 글자와는 틀렸다는 것을 확인하고 마지막에서 와서야 겨우<br />
+‘국뽕’과 비교를 할 수 있게 되고, 우리는 ‘국뽕’이라는 낱말이 있다는 것을 발견합니다.<br /></p>
 
 <p>이를 시간 효율성에 비추어 생각하면 최악의 경우는 <strong>O(N*M)</strong>입니다.<br />
-이 때, N = 리스트의 길이, M = 쿼리 글자의 길이입니다.<br />
-운좋게, 쿼리가 하나 일 경우에는 이 Brute-force 방법도 고려 해볼만 합니다만<br /></p>
+이 때, N = 리스트의 길이, M = 쿼리 낱말의 길이입니다.<br />
+운좋게, 쿼리가 하나 일 경우에는 이 Brute-force 방법도 참아 줄만 합니다만<br /></p>
 
-<p>만약, <strong>쿼리가 하나가 아니라, [‘국뽕’, ‘일본’, ..]처럼 K개의 쿼리가 있는 리스트이면</strong>,<br />
+<p>만약 <strong>궁금한 게 하나의 쿼리가 아니라, [‘국뽕’, ‘일본’, ‘나라’, ..] 처럼 K 개 쿼리의 리스트이면</strong>,<br />
 각각 쿼리도 똑같은 과정을 거치기에 시간효율성은 <strong>O(N* M *K)</strong>가 될 것입니다.<br />
 위의 시간 효율성은 굉장히 비효율적이며, 현실에서도 적용하기 어렵습니다.<br />
-이것을 해결하기 위해서 아래와 같은 Trie라는 구조가 고안되었습니다.<br /></p>
+이것을 해결하기 위해서 아래와 같은 트라이(Trie)라는 구조가 고안되었습니다.<br /></p>
 
-<h1 id="아이디어와-추상적-구조">아이디어와 추상적 구조</h1>
-<p>핵심 아이디어는 <strong>String(글자)를 하나 하나 쪼개어 트리로 저장한다</strong>입니다.<br />
-예를 들면 ‘한국장학재단’ -&gt; [‘한’, ‘국’, ‘장’, ‘학’, ‘재’, ‘단’], ‘일본’-&gt;[‘일’, ‘본’]<br />
-과 같이 모두 쪼갠 후에 아래와 같은 트리 형태로 저장을 합니다.<br /></p>
+<h1 id="트라이의-구조">트라이의 구조</h1>
+<p>트라이의 아이디어는  <strong>낱말을 하나 하나 글자로 쪼개어 트리로 저장한다</strong>입니다.<br />
+예를 들면 ‘한국은행’ -&gt; [‘한’, ‘국’, ‘은’, 행’], ‘일본’ -&gt; [‘일’, ‘본’]<br />
+과 같이 모두 쪼갠 후에 아래와 같은 과정을 거쳐 트리 형태로 저장을 합니다.<br /></p>
 
-<h1 id="트라이의-장단점">트라이의 장단점</h1>
-
-<h1 id="구현-아이디어">구현 아이디어</h1>
+<p><strong>Trie를 만드는 단계:</strong><br />
+만드는 단계는 아래와 같은 두 가지 경우로 진행됩니다.</p>
 <ol>
-  <li>linked-list</li>
-  <li>Hashable dict</li>
-  <li>iteration</li>
-  <li>tree</li>
+  <li>낱말을 글자로 쪼갠 후 노드에 공통되는 글자가 있으면 그 글자 노드로 진행<br /></li>
+  <li>낱말을 글자로 쪼꺤 후 노드에 그 글자가 없다면, 글자에 해당되는 노드를 만들고 진행<br /></li>
 </ol>
 
-<h1 id="실제-구현">실제 구현</h1>
+<p>아래는 Trie를 만드는 과정 중 <strong>‘한국만세’</strong> 라는 낱말을 넣는 차례입니다.<br /></p>
+
+<p><img src="/assets/images/ds/non-linear/Trie/Trie-make1.png" alt="image" /></p>
+
+<p>아래는 Trie를 만드는 과정 중 <strong>‘일본’</strong> 이라는 낱말을 넣는 차례입니다.<br /></p>
+
+<p><img src="/assets/images/ds/non-linear/Trie/Trie-make2.png" alt="image" /></p>
+
+<p><strong>Trie를 다 만든 단계:</strong><br />
+위의 과정이 모두 끝나면 아래와 같습니다.</p>
+
+<p><img src="/assets/images/ds/non-linear/Trie/Trie-complete.png" alt="image" /></p>
+
+<p><strong>Query를 찾는 단계:</strong><br />
+우리가 찾고싶은 쿼리는 ‘국뽕’이라고 한다면 먼저 ‘<strong>국</strong>‘을 가진 노드를 찾고<br />
+‘<strong>국</strong>‘에 해당하는 다음 노드로 넘어간다음, ‘<strong>뽕</strong>‘이라는 노드를 찾으면 됩니다<br /></p>
+
+<p><img src="/assets/images/ds/non-linear/Trie/Trie-find.png" alt="image" /></p>
+
+<p>이번에는 ‘일본’이라는 낱말을 찾는 경우입니다.</p>
+
+<p><img src="/assets/images/ds/non-linear/Trie/Trie-find2.png" alt="image" /></p>
+
+<p>이번에는 ‘<strong>나라</strong>’ 라는 낱말을 찾는 경우인데, 첫 번째 노드부터, <strong>‘나’</strong> 라는 글자가<br />
+존재하지 않습니다. 따라서 <strong>여기엔 ‘나라’ 라는 낱말는 없다</strong> 라는 걸 바로 알 수 있습니다<br /></p>
+
+<p><img src="/assets/images/ds/non-linear/Trie/Trie-not-find.png" alt="image" /></p>
+
+<h1 id="트라이의-장단점">트라이의 장단점</h1>
+<p><strong>장점:</strong><br />
+Query를 찾을 때, Brute-force를 이용하는 것보다 좋은 time-complexity를 가집니다.<br />
+<strong>특히, 처리하는 Query의 수가 많아지면 질수록 이 구조은 정말 유용합니다.</strong><br /></p>
+
+<p>구현하는 것도 어렵지 않고 아이디어도 간단해서 여러 응용을 하기 좋습니다.<br />
+예로: Visted 같은 변수를 추가해서, 갯수를 추적하는 것도 가능합니다.<br /></p>
+
+<p><strong>단점:</strong><br />
+space-complexity면에서는 기존의 것보다 비효율적입니다.<br />
+대부분 구현과정에서 Map을 쓰게 되는데, 이 때 space가 꽤 듭니다.<br /></p>
+
+<p>쿼리가 워낙 적으면 오히려 시간이 걸릴 수도 있다.<br />
+<strong>일단 이 구조는 만들 때도 String hash를 하기 때문에 시간이 걸립니다.</strong><br />
+따라서 쿼리 양은 되게 적고, 저장되어있는 단어는 상대적으로 많을 때<br />
+오히려 Brute-force한 것보다도 더 안좋은 execution-time을 가질 수도 있습니다.<br /></p>
+
+<h1 id="실제-구현-by-python">실제 구현 by Python</h1>
+
+<p><strong>구현 아이디어:</strong><br /></p>
+<ol>
+  <li>linked-list</li>
+  <li>Dictionary</li>
+  <li>iteration</li>
+  <li>Tree</li>
+</ol>
+
+<p><strong>Code:</strong><br /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Trie</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="k">while</span> <span class="n">s</span><span class="p">:</span>
+          <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">:</span> <span class="n">cur</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+          <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+          <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">bool</span><span class="p">:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">;</span>
+        <span class="k">while</span> <span class="n">s</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">:</span> <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
 
       </div>
       

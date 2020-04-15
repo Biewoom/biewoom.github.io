@@ -1,54 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-14T17:39:07+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">Trie: 자동 완성의 비밀!</title><link href="http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html" rel="alternate" type="text/html" title="Trie: 자동 완성의 비밀!" /><published>2020-04-14T00:00:00+09:00</published><updated>2020-04-14T00:00:00+09:00</updated><id>http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie</id><content type="html" xml:base="http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html">&lt;p&gt;혹시 검색어, 채팅 추천이 어떤 원리로 운영되는 지 궁금하신 적 있으신가요?&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-15T17:35:20+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">Trie: 자동 완성의 비밀!</title><link href="http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html" rel="alternate" type="text/html" title="Trie: 자동 완성의 비밀!" /><published>2020-04-14T00:00:00+09:00</published><updated>2020-04-14T00:00:00+09:00</updated><id>http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie</id><content type="html" xml:base="http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html">&lt;p&gt;혹시 검색어, 채팅 추천이 어떤 원리로 운영되는 지 궁금하신 적 있으신가요?&lt;br /&gt;
 현실적으로는 프론트, 백, 데이터 프로세싱 등의 다방면의 접근이 필요하지만&lt;br /&gt;
 그 중 백에서 사용 되는 모델은 &lt;strong&gt;트라이(Trie)&lt;/strong&gt;를 기반으로 하는 것이 많습니다!&lt;br /&gt;&lt;/p&gt;
 
+&lt;p&gt;이는 트라이의 기능이 검색어를 효율적으로 찾는 것에 도움이 되기 떄문인데요.&lt;br /&gt;
+우리는 여기서 Basic 한 Trie에 간단히 대해서 알아보겠습니다.&lt;br /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;※ 현재 대부분 기업은 Basic이 아닌 훨씬 최적화, 변형된 트라이를 사용합니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h1 id=&quot;트라이는-어떤-기능을-하나요&quot;&gt;트라이는 어떤 기능을 하나요?&lt;/h1&gt;
-
 &lt;p&gt;트라이는 String-search, Substring-search 등을 수행합니다&lt;br /&gt;
 이 중 &lt;strong&gt;String-search&lt;/strong&gt; 기능을 예로 설명하겠습니다.&lt;br /&gt;
-우리는 검색어 관리팀이고, n개 글자의 리스트를 가지고 있다고 합시다.&lt;br /&gt;
-가진 리스트는 { ‘한국은행’, ‘한국장학재단’, ‘천조국’, ‘일본’, ‘국물’,…, ‘국뽕’}&lt;br /&gt;&lt;/p&gt;
+우리는 검색어 관리팀이고, n개 낱말의 리스트를 가지고 있다고 합시다.&lt;br /&gt;
+가진 리스트는 &lt;strong&gt;{‘한국은행’, ‘한국만세’, ‘일본’, ‘국장’, ‘국물’,…, ‘국뽕’}&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;이 때, 한 유저가 기존의 리스트에 ‘국뽕’이라는 글자가 있는 지가 궁금합니다.&lt;br /&gt;
-&lt;strong&gt;핵심: 어떻게 하면 리스트에서 이 글자가 있는 지를 효율적으로 알 수 있을까요??&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;이 때, 한 유저가 기존의 리스트에 ‘&lt;strong&gt;국뽕&lt;/strong&gt;‘이라는 낱말이 있는 지가 궁금합니다.&lt;br /&gt;
+&lt;strong&gt;핵심: 어떻게 하면 리스트에서 이 낱말이 있는 지를 효율적으로 알 수 있을까요??&lt;/strong&gt;&lt;br /&gt;
+※ 다음으로 넘어가기 전에 혼자 한 번 고민해봅시다!&lt;/p&gt;
 
 &lt;h1 id=&quot;brute-force-하게-해봅시다&quot;&gt;Brute-force 하게 해봅시다.&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/trie-brute-force.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Trie/trie-brute-force.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;어렵게 생각하지 말고 리스트 안의 것 모두를 우리의 Query인 ‘국뽕’과 하나씩 비교합시다&lt;br /&gt;
-한국은행과 국뽕을 먼저 비교하고, 다음은 한국장학재단, 다음은 일본 … &lt;br /&gt;
-n-1번 까지 있던 모든 글자와는 틀렸다는 것을 확인하고 마지막에서 와서야&lt;br /&gt;
-국뽕과 비교를 하게 되고, 이 리스트에는 ‘국뽕’이라는 글자가 발견되었습니다.&lt;br /&gt;&lt;/p&gt;
+한국은행과 국뽕을 먼저 비교하고, 다음은 한국만세, 다음은 일본 … 등등 &lt;br /&gt;
+n-1번 까지 있던 모든 글자와는 틀렸다는 것을 확인하고 마지막에서 와서야 겨우&lt;br /&gt;
+‘국뽕’과 비교를 할 수 있게 되고, 우리는 ‘국뽕’이라는 낱말이 있다는 것을 발견합니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;이를 시간 효율성에 비추어 생각하면 최악의 경우는 &lt;strong&gt;O(N*M)&lt;/strong&gt;입니다.&lt;br /&gt;
-이 때, N = 리스트의 길이, M = 쿼리 글자의 길이입니다.&lt;br /&gt;
-운좋게, 쿼리가 하나 일 경우에는 이 Brute-force 방법도 고려 해볼만 합니다만&lt;br /&gt;&lt;/p&gt;
+이 때, N = 리스트의 길이, M = 쿼리 낱말의 길이입니다.&lt;br /&gt;
+운좋게, 쿼리가 하나 일 경우에는 이 Brute-force 방법도 참아 줄만 합니다만&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;만약, &lt;strong&gt;쿼리가 하나가 아니라, [‘국뽕’, ‘일본’, ..]처럼 K개의 쿼리가 있는 리스트이면&lt;/strong&gt;,&lt;br /&gt;
+&lt;p&gt;만약 &lt;strong&gt;궁금한 게 하나의 쿼리가 아니라, [‘국뽕’, ‘일본’, ‘나라’, ..] 처럼 K 개 쿼리의 리스트이면&lt;/strong&gt;,&lt;br /&gt;
 각각 쿼리도 똑같은 과정을 거치기에 시간효율성은 &lt;strong&gt;O(N* M *K)&lt;/strong&gt;가 될 것입니다.&lt;br /&gt;
 위의 시간 효율성은 굉장히 비효율적이며, 현실에서도 적용하기 어렵습니다.&lt;br /&gt;
-이것을 해결하기 위해서 아래와 같은 Trie라는 구조가 고안되었습니다.&lt;br /&gt;&lt;/p&gt;
+이것을 해결하기 위해서 아래와 같은 트라이(Trie)라는 구조가 고안되었습니다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;아이디어와-추상적-구조&quot;&gt;아이디어와 추상적 구조&lt;/h1&gt;
-&lt;p&gt;핵심 아이디어는 &lt;strong&gt;String(글자)를 하나 하나 쪼개어 트리로 저장한다&lt;/strong&gt;입니다.&lt;br /&gt;
-예를 들면 ‘한국장학재단’ -&amp;gt; [‘한’, ‘국’, ‘장’, ‘학’, ‘재’, ‘단’], ‘일본’-&amp;gt;[‘일’, ‘본’]&lt;br /&gt;
-과 같이 모두 쪼갠 후에 아래와 같은 트리 형태로 저장을 합니다.&lt;br /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;트라이의-구조&quot;&gt;트라이의 구조&lt;/h1&gt;
+&lt;p&gt;트라이의 아이디어는  &lt;strong&gt;낱말을 하나 하나 글자로 쪼개어 트리로 저장한다&lt;/strong&gt;입니다.&lt;br /&gt;
+예를 들면 ‘한국은행’ -&amp;gt; [‘한’, ‘국’, ‘은’, 행’], ‘일본’ -&amp;gt; [‘일’, ‘본’]&lt;br /&gt;
+과 같이 모두 쪼갠 후에 아래와 같은 과정을 거쳐 트리 형태로 저장을 합니다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;트라이의-장단점&quot;&gt;트라이의 장단점&lt;/h1&gt;
-
-&lt;h1 id=&quot;구현-아이디어&quot;&gt;구현 아이디어&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Trie를 만드는 단계:&lt;/strong&gt;&lt;br /&gt;
+만드는 단계는 아래와 같은 두 가지 경우로 진행됩니다.&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;linked-list&lt;/li&gt;
-  &lt;li&gt;Hashable dict&lt;/li&gt;
-  &lt;li&gt;iteration&lt;/li&gt;
-  &lt;li&gt;tree&lt;/li&gt;
+  &lt;li&gt;낱말을 글자로 쪼갠 후 노드에 공통되는 글자가 있으면 그 글자 노드로 진행&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;낱말을 글자로 쪼꺤 후 노드에 그 글자가 없다면, 글자에 해당되는 노드를 만들고 진행&lt;br /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&quot;실제-구현&quot;&gt;실제 구현&lt;/h1&gt;</content><author><name>유정민</name></author><summary type="html">검색어, 채팅의 자동 완성 안에는 어떤 알고리즘을 쓸까?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/google.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/google.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트: 자물쇠와 열쇠</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html" rel="alternate" type="text/html" title="카카오 테스트: 자물쇠와 열쇠" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html">&lt;h1 id=&quot;핵심개념-및-팁&quot;&gt;핵심개념 및 팁:&lt;/h1&gt;
+&lt;p&gt;아래는 Trie를 만드는 과정 중 &lt;strong&gt;‘한국만세’&lt;/strong&gt; 라는 낱말을 넣는 차례입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Trie/Trie-make1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아래는 Trie를 만드는 과정 중 &lt;strong&gt;‘일본’&lt;/strong&gt; 이라는 낱말을 넣는 차례입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Trie/Trie-make2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Trie를 다 만든 단계:&lt;/strong&gt;&lt;br /&gt;
+위의 과정이 모두 끝나면 아래와 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Trie/Trie-complete.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Query를 찾는 단계:&lt;/strong&gt;&lt;br /&gt;
+우리가 찾고싶은 쿼리는 ‘국뽕’이라고 한다면 먼저 ‘&lt;strong&gt;국&lt;/strong&gt;‘을 가진 노드를 찾고&lt;br /&gt;
+‘&lt;strong&gt;국&lt;/strong&gt;‘에 해당하는 다음 노드로 넘어간다음, ‘&lt;strong&gt;뽕&lt;/strong&gt;‘이라는 노드를 찾으면 됩니다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Trie/Trie-find.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번에는 ‘일본’이라는 낱말을 찾는 경우입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Trie/Trie-find2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번에는 ‘&lt;strong&gt;나라&lt;/strong&gt;’ 라는 낱말을 찾는 경우인데, 첫 번째 노드부터, &lt;strong&gt;‘나’&lt;/strong&gt; 라는 글자가&lt;br /&gt;
+존재하지 않습니다. 따라서 &lt;strong&gt;여기엔 ‘나라’ 라는 낱말는 없다&lt;/strong&gt; 라는 걸 바로 알 수 있습니다&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Trie/Trie-not-find.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;트라이의-장단점&quot;&gt;트라이의 장단점&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;장점:&lt;/strong&gt;&lt;br /&gt;
+Query를 찾을 때, Brute-force를 이용하는 것보다 좋은 time-complexity를 가집니다.&lt;br /&gt;
+&lt;strong&gt;특히, 처리하는 Query의 수가 많아지면 질수록 이 구조은 정말 유용합니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;구현하는 것도 어렵지 않고 아이디어도 간단해서 여러 응용을 하기 좋습니다.&lt;br /&gt;
+예로: Visted 같은 변수를 추가해서, 갯수를 추적하는 것도 가능합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;단점:&lt;/strong&gt;&lt;br /&gt;
+space-complexity면에서는 기존의 것보다 비효율적입니다.&lt;br /&gt;
+대부분 구현과정에서 Map을 쓰게 되는데, 이 때 space가 꽤 듭니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;쿼리가 워낙 적으면 오히려 시간이 걸릴 수도 있다.&lt;br /&gt;
+&lt;strong&gt;일단 이 구조는 만들 때도 String hash를 하기 때문에 시간이 걸립니다.&lt;/strong&gt;&lt;br /&gt;
+따라서 쿼리 양은 되게 적고, 저장되어있는 단어는 상대적으로 많을 때&lt;br /&gt;
+오히려 Brute-force한 것보다도 더 안좋은 execution-time을 가질 수도 있습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;실제-구현-by-python&quot;&gt;실제 구현 by Python&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;구현 아이디어:&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;linked-list&lt;/li&gt;
+  &lt;li&gt;Dictionary&lt;/li&gt;
+  &lt;li&gt;iteration&lt;/li&gt;
+  &lt;li&gt;Tree&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Code:&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Trie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">검색어, 채팅의 자동 완성 안에는 어떤 알고리즘을 쓸까?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트: 자물쇠와 열쇠</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html" rel="alternate" type="text/html" title="카카오 테스트: 자물쇠와 열쇠" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html">&lt;h1 id=&quot;핵심개념-및-팁&quot;&gt;핵심개념 및 팁:&lt;/h1&gt;
 
 &lt;p&gt;첫 번쨰: &lt;strong&gt;효율적인 Time-complexity를 크게 고민하시지는 않아도 될 거 같습니다.&lt;/strong&gt;&lt;br /&gt;
 원체, N과 M의 최대 범위값이 크지 않아서 여러 번의 Nested-loop하셔도 통과가 가능합니다.&lt;br /&gt;
@@ -123,13 +199,80 @@ Space complexity가 약간 커지지만, 코드가 이해하기 쉬워집니다.
       &lt;li&gt;논리구조는 명료했지만 space-complexity가 좀 더 비효율적이 되었다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>유정민</name></author><summary type="html">2020-카카오 채용-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트: 가사 검색</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html" rel="alternate" type="text/html" title="카카오 테스트: 가사 검색" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html">&lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념:&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>유정민</name></author><summary type="html">2020-카카오 채용-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트:가사 검색</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html" rel="alternate" type="text/html" title="카카오 테스트:가사 검색" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html">&lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념:&lt;/h1&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;/non-linear-ds/advanced/2020/04/14/Trie.html&quot;&gt;Trie&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;[Hash]&lt;/li&gt;
+  &lt;li&gt;prefix and suffix&lt;/li&gt;
+  &lt;li&gt;string 길이&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h1 id=&quot;팁&quot;&gt;팁:&lt;/h1&gt;
 
-&lt;h1 id=&quot;code&quot;&gt;Code:&lt;/h1&gt;
-&lt;p&gt;풀이는 위의 설명을 참조해서 코드를 직접 보시면서 이해하면 좋겠습니다.&lt;br /&gt;&lt;/p&gt;</content><author><name>유정민</name></author><summary type="html">2020 카카오-채용 100% 친절 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;1) 문제의 조건을 보시면, query안에,  ‘?’가 있을 수 있는 경우는:  prefix 또는 suffix 또는 ‘?????’ 이렇게 세 가지 경우가 있습니다.  그래서 트리 하나로 해결하시는 것보다, 이 경우들을 다 고려하시면서 한 개이상의 Trie를 만드시는 게 좋습니다.&lt;/p&gt;
+
+&lt;p&gt;2) 이 문제에서는 substring을 구하는 문제가 아니고 match하는 string을 구하는 것이기 때문에 아예 처음부터, string의 길이를 이용하시는 것도 좋습니다.&lt;/p&gt;
+
+&lt;p&gt;3) 다른 응용으로는, 단순한 Trie가 아니라, Trie 내부에, subtree의 노드 수를 계속 추적할 수 있는 값을 추가하시면 훨씬 효율적입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;More Tip:&lt;/strong&gt;&lt;br /&gt;
+문제에서 중복이 있을 수 있다라는 이야기가 나와서 중복을 없애고 시작하면, 좀 더 효율적이지 않나? 라고
+생각이 들 수도 있습니다. 하지만 사실 이건 크게 의미가 없습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;우리는 이전에 같은 string이 있었는지 체크하기 위해 hash function을 적용 하는 과정에서 string 전체를 적어도 한 번을 다 돌아야 합니다.
+그러므로, O(len(string))으로 Trie에서의 탐색하는 것과 같은 time complexity를 가집니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;code&quot;&gt;Code&lt;/h1&gt;
+&lt;p&gt;풀이는 위의 설명을 참조해서 코드를 직접 보시면서 이해하면 좋겠습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Trie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# chr|visited
+&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre_v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre_v&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;pre_v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre_v&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;prefix_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Trie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;suffix_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Trie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;len_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;prefix_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;suffix_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;len_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#preffix_query
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#suffix_query
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;suffix_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IMPOSSIBLE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2020 카카오-채용 100% 친절 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
