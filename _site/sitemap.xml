@@ -2,7 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://localhost:4000/non-linear-ds/advanced/2020/04/14/Trie.html</loc>
+        <loc>http://localhost:4000/graph-theory/basic/2020/04/16/bfs.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/15/move-block.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/non-linear-ds/advanced-ds/2020/04/14/Trie.html</loc>
     </url>
     
     <url>

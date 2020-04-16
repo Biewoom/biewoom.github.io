@@ -14,18 +14,21 @@
   
     
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>코딩 테스트 | 비움</title>
+<title>BFS:주변 찾기의 비밀! | 비움</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="코딩 테스트" />
+<meta property="og:title" content="BFS:주변 찾기의 비밀!" />
 <meta name="author" content="유정민" />
 <meta property="og:locale" content="ko" />
-<meta name="description" content="수박 겉이 아닌 수박 속에 집중하자." />
-<meta property="og:description" content="수박 겉이 아닌 수박 속에 집중하자." />
-<link rel="canonical" href="http://localhost:4000/ps/coding_test/" />
-<meta property="og:url" content="http://localhost:4000/ps/coding_test/" />
+<meta name="description" content="우리가 쓰는 지도앱 안에는 어떤 알고리즘이 있을까?" />
+<meta property="og:description" content="우리가 쓰는 지도앱 안에는 어떤 알고리즘이 있을까?" />
+<link rel="canonical" href="http://localhost:4000/graph-theory/basic/2020/04/16/bfs.html" />
+<meta property="og:url" content="http://localhost:4000/graph-theory/basic/2020/04/16/bfs.html" />
 <meta property="og:site_name" content="비움" />
+<meta property="og:image" content="http://localhost:4000/assets/images/algo/graph_theory/bfs/thumbnail.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-16T00:00:00+09:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logo/bw_logo.svg"},"name":"유정민"},"headline":"코딩 테스트","url":"http://localhost:4000/ps/coding_test/","author":{"@type":"Person","name":"유정민"},"description":"수박 겉이 아닌 수박 속에 집중하자.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logo/bw_logo.svg"},"name":"유정민"},"headline":"BFS:주변 찾기의 비밀!","dateModified":"2020-04-16T00:00:00+09:00","url":"http://localhost:4000/graph-theory/basic/2020/04/16/bfs.html","datePublished":"2020-04-16T00:00:00+09:00","image":{"thumbnail":"/assets/images/algo/graph_theory/bfs/thumbnail.png","url":"http://localhost:4000/assets/images/algo/graph_theory/bfs/thumbnail.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/graph-theory/basic/2020/04/16/bfs.html"},"author":{"@type":"Person","name":"유정민"},"description":"우리가 쓰는 지도앱 안에는 어떤 알고리즘이 있을까?","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -49,7 +52,7 @@
 </head>
 
 
-  <body class="layout--category 코딩-테스트">
+  <body class="layout--post bfs-주변-찾기의-비밀">
 
     <nav class="skip-links">
   <h2 class="screen-reader-text">Skip links</h2>
@@ -198,13 +201,26 @@
         <div class="initial-content">
           <header class="intro">
   
+    
+    
+    
+    <div class="intro-image">
+      <img src="/assets/images/algo/graph_theory/bfs/thumbnail.png" alt="BFS:주변 찾기의 비밀!">
+    </div>
+  
 
   <div class="inner">
     <div class="intro-text">
-      <h1 id="page-title" class="intro-title">코딩 테스트
+      <h1 id="page-title" class="intro-title">BFS:주변 찾기의 비밀!
 </h1>
       
 
+      
+        
+
+        <p class="entry-meta">
+          <span class="byline-item">by 유정민</span><span class="byline-item"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="379 72 16 16"><g><g><path fill="none" d="M380.8,86.7h12.3v-8.8h-12.3V86.7z M389.5,78.8h1.7v1.4h-1.7V78.8z M389.5,81.3h1.7v1.4h-1.7V81.3z M389.5,83.8h1.7v1.4h-1.7V83.8z M386.1,78.8h1.7v1.4h-1.7V78.8z M386.1,81.3h1.7v1.4h-1.7V81.3z M386.1,83.8h1.7v1.4h-1.7V83.8z M382.8,78.8h1.7v1.4h-1.7V78.8z M382.8,81.3h1.7v1.4h-1.7V81.3z M382.8,83.8h1.7v1.4h-1.7V83.8z"/><polygon fill="none" points="384.7 75.1 383.4 75.1 383.4 74.3 380.8 74.3 380.8 76.6 393.2 76.6 393.2 74.3 390.6 74.3 390.6 75.1 389.3 75.1 389.3 74.3 384.7 74.3"/><rect x="382.8" y="78.8" width="1.7" height="1.4"/><rect x="386.1" y="78.8" width="1.7" height="1.4"/><rect x="389.5" y="78.8" width="1.7" height="1.4"/><rect x="382.8" y="81.3" width="1.7" height="1.4"/><rect x="386.1" y="81.3" width="1.7" height="1.4"/><rect x="389.5" y="81.3" width="1.7" height="1.4"/><rect x="382.8" y="83.8" width="1.7" height="1.4"/><rect x="386.1" y="83.8" width="1.7" height="1.4"/><rect x="389.5" y="83.8" width="1.7" height="1.4"/><path d="M383.4,72v1.1h-3.8V88h14.9V73.1h-3.8V72h-1.3v1.1h-4.7V72H383.4z M393.2,86.7h-12.3v-8.8h12.3L393.2,86.7L393.2,86.7z M389.3,74.3v0.8h1.3v-0.8h2.5v2.3h-12.3v-2.3h2.5v0.8h1.3v-0.8H389.3z"/></g></g></svg></span><time datetime="2020-04-16T00:00:00+09:00">April 16, 2020</time></span> <span class="byline-item"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="15 309.7 16 16"><g><path d="M23.9 315.1v3.6c0 .5-.4.9-.9.9s-.9-.4-.9-.9v-3.6h1.8z"/><path d="M30.1 317.7c.5 3.9-2.3 7.5-6.2 7.9-3.9.5-7.5-2.3-7.9-6.2-.5-3.9 2.3-7.5 6.2-7.9v-1.8H24v1.8c1.1.1 2.7.7 3.5 1.4l1.3-1.3 1.3 1.3-1.3 1.3c.5.9 1.2 2.5 1.3 3.5zm-1.8.9c0-2.9-2.4-5.3-5.3-5.3s-5.3 2.4-5.3 5.3 2.4 5.3 5.3 5.3 5.3-2.3 5.3-5.3z"/></g></svg></span>1 min read</span>
+        </p>
       
 
       
@@ -219,119 +235,77 @@
   <div class="inner">
     <article class="entry-wrap">
       <div class="entry-content">
-        <blockquote>
-  <p>최근 Coding test는 어려운 개념을 묻는 쪽 보다는 구현력을 많이 요구하는 문제가 많습니다.<br />
-개념보다는 PS의 실전 또는 기출을 많이 푸는 것이 코드테스트 통과를 위해서는 좋습니다<br /></p>
-</blockquote>
+        <p><strong>지도 앱을 이용해 최단 경로를 찾거나 주변에 가까운 음식점은 어떤 것이 있는지?</strong><br />
+등의 기능을 사용해 보신 적이 있으신가요? 이 안에는 어떤 원리가 숨겨져 있을까요?<br />
+이 안에는 프론트, 백, 데이터프로세싱, GPS등 여러 기술이 복잡하게 있지만<br />
+그 중 백에서는 <strong>BFS</strong>을 기반한 알고리즘이 쓰이는 경우가 많습니다.<br />
+과연 BFS란 머고 어떤 기능으로 이것을 통해 길 찾기를 할 수 있는지 알아보겠습니다.<br /></p>
 
-<h2 id="상세카테고리">상세카테고리</h2>
-<p>#<a href="kakao-2020-blind/">kakao-blind-2020</a></p>
+<h1 id="bfs는-어떤-기능을-하나요">BFS는 어떤 기능을 하나요?</h1>
+<p>BFS는 <strong>길찾기 또는 주변탐색</strong> 같은 <strong>노드탐색</strong>기능을 수행할 수 있습니다.<br />
+비슷한 기능을 수행하는 알고리즘으론 DFS(depth first search)가 있습니다.<br /></p>
 
+<p>BFS는 Breath-First-search의 약자로 너비-우선-탐색을 의미하는데요.<br />
+<strong>너비를 우선 탐색하기 때문에, 가장 가까운 노드 탐색이나, 주변에 있는 노드를 탐색</strong><br />
+하는 경우는 DFS보다 좀 더 효율적이라는 장점을 가집니다!<br /></p>
 
-<div class="entries-grid">
-  
+<p>이 중 <strong>가장 가까운 노드 탐색 기능을</strong> 예로 들어 자세히 설명하겠습니다.<br /></p>
 
-<article class="entry">
-  <header class="entry-header">
-    <h3 class="entry-title">
-      <a href="/coding%20test/kakao%202020%20blind/2020/04/15/move-block.html" rel="bookmark">카카오 테스트:블록 이동
-</a>
-    </h3>
-    
-      
-      
-      
-      <img class="entry-image u-photo" src="/assets/images/PS/2020-kakao-blind/move.png" alt="">
-    
-  </header>
-  <footer class="entry-meta">
-    <ul>
-    
-      <li><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="379 72 16 16"><g><g><path fill="none" d="M380.8,86.7h12.3v-8.8h-12.3V86.7z M389.5,78.8h1.7v1.4h-1.7V78.8z M389.5,81.3h1.7v1.4h-1.7V81.3z M389.5,83.8h1.7v1.4h-1.7V83.8z M386.1,78.8h1.7v1.4h-1.7V78.8z M386.1,81.3h1.7v1.4h-1.7V81.3z M386.1,83.8h1.7v1.4h-1.7V83.8z M382.8,78.8h1.7v1.4h-1.7V78.8z M382.8,81.3h1.7v1.4h-1.7V81.3z M382.8,83.8h1.7v1.4h-1.7V83.8z"/><polygon fill="none" points="384.7 75.1 383.4 75.1 383.4 74.3 380.8 74.3 380.8 76.6 393.2 76.6 393.2 74.3 390.6 74.3 390.6 75.1 389.3 75.1 389.3 74.3 384.7 74.3"/><rect x="382.8" y="78.8" width="1.7" height="1.4"/><rect x="386.1" y="78.8" width="1.7" height="1.4"/><rect x="389.5" y="78.8" width="1.7" height="1.4"/><rect x="382.8" y="81.3" width="1.7" height="1.4"/><rect x="386.1" y="81.3" width="1.7" height="1.4"/><rect x="389.5" y="81.3" width="1.7" height="1.4"/><rect x="382.8" y="83.8" width="1.7" height="1.4"/><rect x="386.1" y="83.8" width="1.7" height="1.4"/><rect x="389.5" y="83.8" width="1.7" height="1.4"/><path d="M383.4,72v1.1h-3.8V88h14.9V73.1h-3.8V72h-1.3v1.1h-4.7V72H383.4z M393.2,86.7h-12.3v-8.8h12.3L393.2,86.7L393.2,86.7z M389.3,74.3v0.8h1.3v-0.8h2.5v2.3h-12.3v-2.3h2.5v0.8h1.3v-0.8H389.3z"/></g></g></svg></span><time class="entry-time" datetime="2020-04-15T00:00:00+09:00">April 15, 2020</time></li>
-    
-    
-      <li><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="15 309.7 16 16"><g><path d="M23.9 315.1v3.6c0 .5-.4.9-.9.9s-.9-.4-.9-.9v-3.6h1.8z"/><path d="M30.1 317.7c.5 3.9-2.3 7.5-6.2 7.9-3.9.5-7.5-2.3-7.9-6.2-.5-3.9 2.3-7.5 6.2-7.9v-1.8H24v1.8c1.1.1 2.7.7 3.5 1.4l1.3-1.3 1.3 1.3-1.3 1.3c.5.9 1.2 2.5 1.3 3.5zm-1.8.9c0-2.9-2.4-5.3-5.3-5.3s-5.3 2.4-5.3 5.3 2.4 5.3 5.3 5.3 5.3-2.3 5.3-5.3z"/></g></svg></span>2 min read</li>
-    
-    </ul>
-  </footer>
-  <div class="entry-excerpt">
-    
-      <p>2020 카카오-채용 100% 친절 풀이</p>
+<p>철수가 여행 중 배가 고파 짜장면을 먹을려고 하는데, 이 동네에는 3개의 중국집이 있습니다.<br />
+철수는 너무 배가 고파서 현재 위치에서 가장 가까운 중국집에 가서 짜장면을 먹으려고 합니다.<br /></p>
 
-      <p><a href="/coding%20test/kakao%202020%20blind/2020/04/15/move-block.html" class="more-link">Read More <span class="icon icon--arrow-right"><svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16"><path d="M63.1-107.7l-6.7-6.7c-.2-.3-.6-.4-.9-.4-.4 0-.7.1-.9.4l-.8.8c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l5 5-5 5c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l.8.8c.3.3.6.4.9.4.4 0 .7-.1.9-.4l6.7-6.7c.3-.3.4-.6.4-.9 0-.4-.2-.7-.4-.9z"/></svg></span></a></p>
-    
-  </div>
-</article>
+<p><img src="/assets/images/algo/graph_theory/bfs/map.png" alt="image" /></p>
 
+<p>위는 동네의 지도이고 <strong>철수는 어떻게 하면 효율적으로 가장 가까운 중국집을 찾을까요?</strong><br />
+※ 다음으로 넘어가기 전에 혼자 한 번 고민해봅시다!</p>
 
-<article class="entry">
-  <header class="entry-header">
-    <h3 class="entry-title">
-      <a href="/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html" rel="bookmark">카카오 테스트:가사 검색
-</a>
-    </h3>
-    
-      
-      
-      
-      <img class="entry-image u-photo" src="/assets/images/PS/2020-kakao-blind/lyrics.jpg" alt="">
-    
-  </header>
-  <footer class="entry-meta">
-    <ul>
-    
-      <li><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="379 72 16 16"><g><g><path fill="none" d="M380.8,86.7h12.3v-8.8h-12.3V86.7z M389.5,78.8h1.7v1.4h-1.7V78.8z M389.5,81.3h1.7v1.4h-1.7V81.3z M389.5,83.8h1.7v1.4h-1.7V83.8z M386.1,78.8h1.7v1.4h-1.7V78.8z M386.1,81.3h1.7v1.4h-1.7V81.3z M386.1,83.8h1.7v1.4h-1.7V83.8z M382.8,78.8h1.7v1.4h-1.7V78.8z M382.8,81.3h1.7v1.4h-1.7V81.3z M382.8,83.8h1.7v1.4h-1.7V83.8z"/><polygon fill="none" points="384.7 75.1 383.4 75.1 383.4 74.3 380.8 74.3 380.8 76.6 393.2 76.6 393.2 74.3 390.6 74.3 390.6 75.1 389.3 75.1 389.3 74.3 384.7 74.3"/><rect x="382.8" y="78.8" width="1.7" height="1.4"/><rect x="386.1" y="78.8" width="1.7" height="1.4"/><rect x="389.5" y="78.8" width="1.7" height="1.4"/><rect x="382.8" y="81.3" width="1.7" height="1.4"/><rect x="386.1" y="81.3" width="1.7" height="1.4"/><rect x="389.5" y="81.3" width="1.7" height="1.4"/><rect x="382.8" y="83.8" width="1.7" height="1.4"/><rect x="386.1" y="83.8" width="1.7" height="1.4"/><rect x="389.5" y="83.8" width="1.7" height="1.4"/><path d="M383.4,72v1.1h-3.8V88h14.9V73.1h-3.8V72h-1.3v1.1h-4.7V72H383.4z M393.2,86.7h-12.3v-8.8h12.3L393.2,86.7L393.2,86.7z M389.3,74.3v0.8h1.3v-0.8h2.5v2.3h-12.3v-2.3h2.5v0.8h1.3v-0.8H389.3z"/></g></g></svg></span><time class="entry-time" datetime="2020-04-13T00:00:00+09:00">April 13, 2020</time></li>
-    
-    
-      <li><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="15 309.7 16 16"><g><path d="M23.9 315.1v3.6c0 .5-.4.9-.9.9s-.9-.4-.9-.9v-3.6h1.8z"/><path d="M30.1 317.7c.5 3.9-2.3 7.5-6.2 7.9-3.9.5-7.5-2.3-7.9-6.2-.5-3.9 2.3-7.5 6.2-7.9v-1.8H24v1.8c1.1.1 2.7.7 3.5 1.4l1.3-1.3 1.3 1.3-1.3 1.3c.5.9 1.2 2.5 1.3 3.5zm-1.8.9c0-2.9-2.4-5.3-5.3-5.3s-5.3 2.4-5.3 5.3 2.4 5.3 5.3 5.3 5.3-2.3 5.3-5.3z"/></g></svg></span>1 min read</li>
-    
-    </ul>
-  </footer>
-  <div class="entry-excerpt">
-    
-      <p>2020 카카오-채용 100% 친절 풀이</p>
+<h1 id="brute-force하게-해봅시다">brute-force하게 해봅시다.<br /></h1>
+<p>일단 철수 위치에서 갈 수 있는 모든 노드를 조사하고 중국집을 찾았다면<br />
+중국집 거리를 모두 비교해서 가장 가까운 중국집을 알아내는 방법입니다.<br /></p>
 
-      <p><a href="/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html" class="more-link">Read More <span class="icon icon--arrow-right"><svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16"><path d="M63.1-107.7l-6.7-6.7c-.2-.3-.6-.4-.9-.4-.4 0-.7.1-.9.4l-.8.8c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l5 5-5 5c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l.8.8c.3.3.6.4.9.4.4 0 .7-.1.9-.4l6.7-6.7c.3-.3.4-.6.4-.9 0-.4-.2-.7-.4-.9z"/></svg></span></a></p>
-    
-  </div>
-</article>
+<p><img src="/assets/images/algo/graph_theory/bfs/brute-force.png" alt="image" /></p>
 
+<p>위처럼 구하면, <strong>이 동네에서 현 위치에서 가장 가까운 중국집은 황룡반점이다.</strong><br />
+라는 것을 알 수 있고, 철수는 현 위치에서 1M 떨어진 청룡반점으로 갈 것 입니다.<br /></p>
 
-<article class="entry">
-  <header class="entry-header">
-    <h3 class="entry-title">
-      <a href="/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html" rel="bookmark">카카오 테스트: 자물쇠와 열쇠
-</a>
-    </h3>
-    
-      
-      
-      
-      <img class="entry-image u-photo" src="/assets/images/PS/2020-kakao-blind/thumnail-lock.png" alt="">
-    
-  </header>
-  <footer class="entry-meta">
-    <ul>
-    
-      <li><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="379 72 16 16"><g><g><path fill="none" d="M380.8,86.7h12.3v-8.8h-12.3V86.7z M389.5,78.8h1.7v1.4h-1.7V78.8z M389.5,81.3h1.7v1.4h-1.7V81.3z M389.5,83.8h1.7v1.4h-1.7V83.8z M386.1,78.8h1.7v1.4h-1.7V78.8z M386.1,81.3h1.7v1.4h-1.7V81.3z M386.1,83.8h1.7v1.4h-1.7V83.8z M382.8,78.8h1.7v1.4h-1.7V78.8z M382.8,81.3h1.7v1.4h-1.7V81.3z M382.8,83.8h1.7v1.4h-1.7V83.8z"/><polygon fill="none" points="384.7 75.1 383.4 75.1 383.4 74.3 380.8 74.3 380.8 76.6 393.2 76.6 393.2 74.3 390.6 74.3 390.6 75.1 389.3 75.1 389.3 74.3 384.7 74.3"/><rect x="382.8" y="78.8" width="1.7" height="1.4"/><rect x="386.1" y="78.8" width="1.7" height="1.4"/><rect x="389.5" y="78.8" width="1.7" height="1.4"/><rect x="382.8" y="81.3" width="1.7" height="1.4"/><rect x="386.1" y="81.3" width="1.7" height="1.4"/><rect x="389.5" y="81.3" width="1.7" height="1.4"/><rect x="382.8" y="83.8" width="1.7" height="1.4"/><rect x="386.1" y="83.8" width="1.7" height="1.4"/><rect x="389.5" y="83.8" width="1.7" height="1.4"/><path d="M383.4,72v1.1h-3.8V88h14.9V73.1h-3.8V72h-1.3v1.1h-4.7V72H383.4z M393.2,86.7h-12.3v-8.8h12.3L393.2,86.7L393.2,86.7z M389.3,74.3v0.8h1.3v-0.8h2.5v2.3h-12.3v-2.3h2.5v0.8h1.3v-0.8H389.3z"/></g></g></svg></span><time class="entry-time" datetime="2020-04-13T00:00:00+09:00">April 13, 2020</time></li>
-    
-    
-      <li><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="15 309.7 16 16"><g><path d="M23.9 315.1v3.6c0 .5-.4.9-.9.9s-.9-.4-.9-.9v-3.6h1.8z"/><path d="M30.1 317.7c.5 3.9-2.3 7.5-6.2 7.9-3.9.5-7.5-2.3-7.9-6.2-.5-3.9 2.3-7.5 6.2-7.9v-1.8H24v1.8c1.1.1 2.7.7 3.5 1.4l1.3-1.3 1.3 1.3-1.3 1.3c.5.9 1.2 2.5 1.3 3.5zm-1.8.9c0-2.9-2.4-5.3-5.3-5.3s-5.3 2.4-5.3 5.3 2.4 5.3 5.3 5.3 5.3-2.3 5.3-5.3z"/></g></svg></span>1 min read</li>
-    
-    </ul>
-  </footer>
-  <div class="entry-excerpt">
-    
-      <p>2020-카카오 채용-100% 풀이</p>
+<p>하지만 이 때 time-complexity를 구해보면, O(N+M) 입니다.<br />
+이 떄 N = nodes의 수, M = Edges의 수 = 길의 수<br />
+로 <strong>모든 노드와 길을 가야 하는</strong> Time-complexity를 가집니다.<br />
+이는 동네가 커져서, <strong>Nodes와 edges가 많아질수록 굉장히 비효율적이 됩니다.</strong><br /></p>
 
-      <p><a href="/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html" class="more-link">Read More <span class="icon icon--arrow-right"><svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16"><path d="M63.1-107.7l-6.7-6.7c-.2-.3-.6-.4-.9-.4-.4 0-.7.1-.9.4l-.8.8c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l5 5-5 5c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l.8.8c.3.3.6.4.9.4.4 0 .7-.1.9-.4l6.7-6.7c.3-.3.4-.6.4-.9 0-.4-.2-.7-.4-.9z"/></svg></span></a></p>
-    
-  </div>
-</article>
+<p>이 비효율성을 해결하기 위해서 BFS라는 알고리즘을 고안하게 되었습니다.<br /></p>
 
-</div>
+<h1 id="bfs">BFS:</h1>
+<p>BFS를 이용한 풀이법은 <strong>거리를 기준으로 Greedy하게 문제를 접근해서 푸는 것</strong>입니다.<br />
+한마디로, <strong>가까운 거리의 노드부터 차례 차례 구하다 보면 가장 먼저 만난 노드가 정답이다.</strong><br />
+라는 아이디어인데, 먼저, <strong>거리를 기준으로 노드를 구한다는 것을 설명하겠습니다.</strong><br /></p>
+
+<p>거리를 기준으로 노드를 구하다는 것은 그림으로 표한하면 아래와 같습니다.<br />
+<strong>먼저 거리가 1m인 Node들을 구하는 경우입니다.</strong><br /></p>
+
+<p><img src="/assets/images/algo/graph_theory/bfs/bfs-find1.png" alt="image" /></p>
+
+<p><strong>거리가 2m인 Node 들을 구하는 경우입니다.</strong><br /></p>
+
+<p><img src="/assets/images/algo/graph_theory/bfs/bfs-find2.png" alt="image" /></p>
+
+<p><strong>마지막으로 거리가 3m인 Node들을 구하는 경우입니다.</strong><br /></p>
+
+<p><img src="/assets/images/algo/graph_theory/bfs/bfs-find3.png" alt="image" /></p>
+
+<p>우리는 위의 BFS를 사용해 문제를 쉽게 풀 수 있습니다.<br />
+<strong>바로 첫 번쨰의 계산과정만 하고 두 번쨰, 세 번째 계산은 생략한다.</strong>라는 것입니다.<br />
+<strong>첫 번째 과정에서 중국집을 만나면, 그 중국집이 바로 가장 가까운 중국집입니다.</strong><br />
+이유는 다음 과정에서의 중국집은 이 중국집보다 멀리 있을 수 밖에 없기 때문입니다.<br /></p>
+
+<h1 id="bfs의-장단점">BFS의 장단점:</h1>
+
+<h1 id="실제-구현-by-python">실제 구현 by Python</h1>
 
       </div>
+      
+        
+      
     </article>
   </div>
 </main>
