@@ -17,11 +17,11 @@ actions:
 
 **PS에서는 나오기 힘든 코딩을 요구합니다.**<br/>
 카카오 Tech 측에서도, '상당한 난이도의 코딩을 요구한다.' 라고 언급할 정도로<br/>
-보통 problemSolving 문제 이상의 상당한 구현력을 요구합니다.<br/>
+보통 ProblemSolving 문제 이상의 상당한 구현력을 요구합니다.<br/>
 # 핵심 개념:
-1. BFS
+1. [BFS]( {% link _posts/Algorithm/graph_theory/2020-04-16-bfs.md %} )
 2. HashMap
-3. Memoization
+3. Memoization - visited
 
 # 풀이법:
 1. 최소 시간을 구하기 위해서 BFS을 이용한 Outer-loop에서 최소 시간인 time을 추적합니다.<br/> 마지막 칸을 만나게 되면 time을 Return 합니다.

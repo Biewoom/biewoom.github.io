@@ -1,8 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-16T17:02:10+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">BFS:주변 찾기의 비밀!</title><link href="http://localhost:4000/graph-theory/basic/2020/04/16/bfs.html" rel="alternate" type="text/html" title="BFS:주변 찾기의 비밀!" /><published>2020-04-16T00:00:00+09:00</published><updated>2020-04-16T00:00:00+09:00</updated><id>http://localhost:4000/graph-theory/basic/2020/04/16/bfs</id><content type="html" xml:base="http://localhost:4000/graph-theory/basic/2020/04/16/bfs.html">&lt;p&gt;&lt;strong&gt;지도 앱을 이용해 최단 경로를 찾거나 주변에 가까운 음식점은 어떤 것이 있는지?&lt;/strong&gt;&lt;br /&gt;
-등의 기능을 사용해 보신 적이 있으신가요? 이 안에는 어떤 원리가 숨겨져 있을까요?&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-17T15:34:23+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">Matrix-roatation:그림 90도 회전의 비밀!</title><link href="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html" rel="alternate" type="text/html" title="Matrix-roatation:그림 90도 회전의 비밀!" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation</id><content type="html" xml:base="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html">&lt;p&gt;PPT를 만들거나 포토샵을 수정할 때, 그림을 시계방향 또는 반시계방향으로&lt;br /&gt;
+90도, 180도, 270도 회전을 하신 적이 있을실거에요. &lt;br /&gt; 우리는 마우스를 이용해 돌리지만,
+컴퓨터 안에서는 어떤 일이 벌어지고 있을까요?&lt;br /&gt;
+답부터 말하자면, 컴퓨터는 &lt;strong&gt;Matrix-rotation&lt;/strong&gt;을 이용해 그림을 90도 회전합니다.&lt;br /&gt;
+이 Matrix-rotation에 대해서 간단히 알아보도록 하겠습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;참조- 여기서는 Inplace가 아닌 Extra memory를 쓴 matrix-rotation에 대한 설명입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;그림-파일은-어떤-모양인가&quot;&gt;그림 파일은 어떤 모양인가?&lt;/h1&gt;
+&lt;p&gt;주제에 들어가기 앞서서, 그림파일이란 건 무엇인지 아셔야합니다.&lt;br /&gt;
+간단하게 컴퓨터는 그림파일을 어떻게 인식하고 있는지 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/pixel.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;정말 간단하게 설명하면, 위 그림처럼 &lt;strong&gt;각 그림은 작은 Pixel들로 이루어져 있고&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;각 Pixel들은 숫자의 행렬(Maxtrix) 형태로 구성되어 있습니다!&lt;/strong&gt;&lt;br /&gt;
+이 말은 결국 &lt;strong&gt;모든 그림은 큰 숫자의 행렬(Matrix)모양으로 존재하고 있다는 것입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;그림을-회전-시킨다는-건&quot;&gt;그림을 회전 시킨다는 건?&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/overview.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;결국 그림을 회전시킨다는 것은 다시 그림을 만드는 데, 그 그림의 형태는&lt;br /&gt;
+&lt;strong&gt;본래 그림의 행렬의 원소들을 적당한 패턴으로 재배열을 시켜 만든 행렬&lt;/strong&gt;입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;시계방향으로-90도로-회전&quot;&gt;시계방향으로 90도로 회전&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/clockwise.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위와 같이 시계방향일 때, 행렬도 똑같이 90도를 회전시킨다고 상상하고 돌리면&lt;br /&gt;
+행렬로 생각했을 때는 &lt;strong&gt;행렬의 좌표는 아래와 같은 패턴을 따른다는 것을 알 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/clockwise-matrix.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;패턴에 따르면, 행렬 좌표로 생각했을 때 &lt;strong&gt;새로운 행렬의 x좌표 = 기존의 y좌표이고&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;새로운 행렬의 y좌표 = 행렬의 크기 - 기존의 x좌표 - 1&lt;/strong&gt; 입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;구현-by-python&quot;&gt;구현 by Python&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Clockwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;반시계방향으로-90도로-회전&quot;&gt;반시계방향으로 90도로 회전&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/counterclockwise.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위와 같이 반시계방향일 때, 행렬도 똑같이 90도를 회전시킨다고 상상하고 돌리면&lt;br /&gt;
+행렬로 생각했을 때는 &lt;strong&gt;행렬의 좌표는 아래와 같은 패턴을 따른다는 것을 알 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/counterclockwise-matrix.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;패턴에 따르면, &lt;strong&gt;새로운 행렬의 x좌표 = 행렬의 크기 - 기존의 y좌표 - 1 이고&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;새로운 행렬의 y좌표 = 기존의 x좌표&lt;/strong&gt; 입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;구현-by-python-1&quot;&gt;구현 by Python&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Counterclockwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;돌리고자 하는 각도가 180, 270일 떄는?&lt;/strong&gt;&lt;br /&gt;
+이미 아시겠지만, 위의 과정들을 연속해서 하면 됩니다.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>유정민</name></author><summary type="html">그림 90도 회전에 쓰는 matrix-rotation에 대해서 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/algo/misc/matrix-rotation/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/algo/misc/matrix-rotation/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">BFS:최단 경로의 비밀!</title><link href="http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html" rel="alternate" type="text/html" title="BFS:최단 경로의 비밀!" /><published>2020-04-16T00:00:00+09:00</published><updated>2020-04-16T00:00:00+09:00</updated><id>http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs</id><content type="html" xml:base="http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html">&lt;p&gt;&lt;strong&gt;지도 앱을 이용해 최단 경로를 찾거나 주변에 가까운 음식점은 어떤 것이 있는지&lt;/strong&gt;&lt;br /&gt;
+같은 기능들 한 번씩은 사용해 보셨죠. 어떤 원리가 있는 지 궁금하신 적 있나요?&lt;br /&gt;
 이 안에는 프론트, 백, 데이터프로세싱, GPS등 여러 기술이 복잡하게 있지만&lt;br /&gt;
 그 중 백에서는 &lt;strong&gt;BFS&lt;/strong&gt;을 기반한 알고리즘이 쓰이는 경우가 많습니다.&lt;br /&gt;
-과연 BFS란 머고 어떤 기능으로 이것을 통해 길 찾기를 할 수 있는지 알아보겠습니다.&lt;br /&gt;&lt;/p&gt;
+과연 BFS란 머고 어떤 기능으로 위 기능들을 할 수 있는지 알아보겠습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;bfs는-어떤-기능을-하나요&quot;&gt;BFS는 어떤 기능을 하나요?&lt;/h1&gt;
 &lt;p&gt;BFS는 &lt;strong&gt;길찾기 또는 주변탐색&lt;/strong&gt; 같은 &lt;strong&gt;노드탐색&lt;/strong&gt;기능을 수행할 수 있습니다.&lt;br /&gt;
@@ -12,7 +82,7 @@
 &lt;strong&gt;너비를 우선 탐색하기 때문에, 가장 가까운 노드 탐색이나, 주변에 있는 노드를 탐색&lt;/strong&gt;&lt;br /&gt;
 하는 경우는 DFS보다 좀 더 효율적이라는 장점을 가집니다!&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;이 중 &lt;strong&gt;가장 가까운 노드 탐색 기능을&lt;/strong&gt; 예로 들어 자세히 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;이 중 &lt;strong&gt;‘가장 가까운 노드 탐색’ 기능을&lt;/strong&gt; 예로 들어 자세히 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;철수가 여행 중 배가 고파 짜장면을 먹을려고 하는데, 이 동네에는 3개의 중국집이 있습니다.&lt;br /&gt;
 철수는 너무 배가 고파서 현재 위치에서 가장 가까운 중국집에 가서 짜장면을 먹으려고 합니다.&lt;br /&gt;&lt;/p&gt;
@@ -23,18 +93,18 @@
 ※ 다음으로 넘어가기 전에 혼자 한 번 고민해봅시다!&lt;/p&gt;
 
 &lt;h1 id=&quot;brute-force하게-해봅시다&quot;&gt;brute-force하게 해봅시다.&lt;br /&gt;&lt;/h1&gt;
-&lt;p&gt;일단 철수 위치에서 갈 수 있는 모든 노드를 조사하고 중국집을 찾았다면&lt;br /&gt;
-중국집 거리를 모두 비교해서 가장 가까운 중국집을 알아내는 방법입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;일단 철수 위치에서 갈 수 있는 모든 노드를 조사하고 그 노드가 중국집이라면&lt;br /&gt;
+그 거리 기록하고, 기록한 거리를 모두 비교해서 가까운 중국집을 알아내는 방법입니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/algo/graph_theory/bfs/brute-force.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위처럼 구하면, &lt;strong&gt;이 동네에서 현 위치에서 가장 가까운 중국집은 황룡반점이다.&lt;/strong&gt;&lt;br /&gt;
 라는 것을 알 수 있고, 철수는 현 위치에서 1M 떨어진 청룡반점으로 갈 것 입니다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;하지만 이 때 time-complexity를 구해보면, O(N+M) 입니다.&lt;br /&gt;
-이 떄 N = nodes의 수, M = Edges의 수 = 길의 수&lt;br /&gt;
-로 &lt;strong&gt;모든 노드와 길을 가야 하는&lt;/strong&gt; Time-complexity를 가집니다.&lt;br /&gt;
-이는 동네가 커져서, &lt;strong&gt;Nodes와 edges가 많아질수록 굉장히 비효율적이 됩니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;그런데 이 때 time-complexity를 구해보면, O(N+M) 입니다.&lt;br /&gt;
+(이 떄, N = nodes의 수, M = Edges의 수 = 길의 수)&lt;br /&gt;
+이는 &lt;strong&gt;모든 노드와 길을 가봐야지&lt;/strong&gt; 최단 거리를 알 수 있다는 것이죠.&lt;br /&gt;
+만약 동네가 커질수록, 즉 &lt;strong&gt;Nodes와 edges가 많아질수록 굉장히 비효율적이 됩니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;이 비효율성을 해결하기 위해서 BFS라는 알고리즘을 고안하게 되었습니다.&lt;br /&gt;&lt;/p&gt;
 
@@ -43,34 +113,73 @@
 한마디로, &lt;strong&gt;가까운 거리의 노드부터 차례 차례 구하다 보면 가장 먼저 만난 노드가 정답이다.&lt;/strong&gt;&lt;br /&gt;
 라는 아이디어인데, 먼저, &lt;strong&gt;거리를 기준으로 노드를 구한다는 것을 설명하겠습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;거리를 기준으로 노드를 구하다는 것은 그림으로 표한하면 아래와 같습니다.&lt;br /&gt;
-&lt;strong&gt;먼저 거리가 1m인 Node들을 구하는 경우입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;거리를 기준으로 노드를 구하다는 것은 그림으로 표한하면 아래와 같습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1번 경우: 먼저 거리가 1m인 Node들을 구하는 경우입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/algo/graph_theory/bfs/bfs-find1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;거리가 2m인 Node 들을 구하는 경우입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2번 경우: 거리가 2m인 Node 들을 구하는 경우입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/algo/graph_theory/bfs/bfs-find2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;마지막으로 거리가 3m인 Node들을 구하는 경우입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3번 경우: 거리가 3m인 Node들을 구하는 경우입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/algo/graph_theory/bfs/bfs-find3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;우리는 위의 BFS를 사용해 문제를 쉽게 풀 수 있습니다.&lt;br /&gt;
-&lt;strong&gt;바로 첫 번쨰의 계산과정만 하고 두 번쨰, 세 번째 계산은 생략한다.&lt;/strong&gt;라는 것입니다.&lt;br /&gt;
-&lt;strong&gt;첫 번째 과정에서 중국집을 만나면, 그 중국집이 바로 가장 가까운 중국집입니다.&lt;/strong&gt;&lt;br /&gt;
-이유는 다음 과정에서의 중국집은 이 중국집보다 멀리 있을 수 밖에 없기 때문입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;우리는 위의 BFS과정에서 약간의 직관을 사용하면 문제를 쉽게 풀 수 있습니다.&lt;br /&gt;
+&lt;strong&gt;바로 첫 번쨰의 경우만 진행하고 두 번쨰, 세 번째 경우는 생략한다.&lt;/strong&gt;라는 것입니다.&lt;br /&gt;
+&lt;strong&gt;첫 번째 경우에서 중국집을 만나면, 그 중국집이 바로 가장 가까운 중국집입니다.&lt;/strong&gt;&lt;br /&gt;
+이유는 다음 경우에서의 중국집들은 이 중국집보다 멀리 있을 수 밖에 없기 때문입니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;bfs의-장단점&quot;&gt;BFS의 장단점:&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;장점:&lt;/strong&gt;&lt;br /&gt;
+위처럼 최단거리 노드를 탐색하는 경우에는 정말 특화되어있습니다.&lt;br /&gt;
+Time-complexity는 지도의 구성(Topology)에 따라 다르지만 기존의 O(N+M) 보다는&lt;br /&gt;
+훨씬 좋은 Time-complexity를 보유할 수 있습니다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;실제-구현-by-python&quot;&gt;실제 구현 by Python&lt;/h1&gt;</content><author><name>유정민</name></author><summary type="html">우리가 쓰는 지도앱 안에는 어떤 알고리즘이 있을까?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/algo/graph_theory/bfs/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/algo/graph_theory/bfs/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트:블록 이동</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/15/move-block.html" rel="alternate" type="text/html" title="카카오 테스트:블록 이동" /><published>2020-04-15T00:00:00+09:00</published><updated>2020-04-15T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/15/move-block</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/15/move-block.html">&lt;p&gt;&lt;strong&gt;PS에서는 나오기 힘든 코딩을 요구합니다.&lt;/strong&gt;&lt;br /&gt;
+&lt;p&gt;알고리즘이 간단하고 딴 곳에 쓰기도 좋아서 다른 알고리즘에도 자주 쓰이기 좋습니다.&lt;br /&gt;
+대표적으로 다익스트라 알고리즘, Kruaskal 알고리즘에서 BFS를 이용합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;단점:&lt;/strong&gt;&lt;br /&gt;
+경우에 따라 BFS를 썻을 때 논리 구조가 복잡해지고 구현하기 쉽지 않을 수 있습니다.&lt;br /&gt;
+이는 BFS가 각 Node별로 Parallize하게 진행되기 때문입니다.&lt;br /&gt;
+※ Parallel programming을 할 수 있기 때문에, 장점으로 될 수 있겠네요&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;실제-구현-by-python&quot;&gt;실제 구현 by Python&lt;/h1&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BFS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edges&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#make edges list
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;adj_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edges&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;node1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;adj_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;adj_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;#bfs
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'철수 위치'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cur_node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur_node&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur_node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur_node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'반점'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur_node&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 중국집
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_node&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adj_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur_node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next_node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">우리가 쓰는 지도앱 안에 쓰이는 BFS를 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/algo/graph_theory/bfs/thumbnail.png" /><media:content medium="image" url="http://localhost:4000/assets/images/algo/graph_theory/bfs/thumbnail.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트:블록 이동</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/15/move-block.html" rel="alternate" type="text/html" title="카카오 테스트:블록 이동" /><published>2020-04-15T00:00:00+09:00</published><updated>2020-04-15T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/15/move-block</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/15/move-block.html">&lt;p&gt;&lt;strong&gt;PS에서는 나오기 힘든 코딩을 요구합니다.&lt;/strong&gt;&lt;br /&gt;
 카카오 Tech 측에서도, ‘상당한 난이도의 코딩을 요구한다.’ 라고 언급할 정도로&lt;br /&gt;
-보통 problemSolving 문제 이상의 상당한 구현력을 요구합니다.&lt;br /&gt;&lt;/p&gt;
+보통 ProblemSolving 문제 이상의 상당한 구현력을 요구합니다.&lt;br /&gt;&lt;/p&gt;
 &lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념:&lt;/h1&gt;
 &lt;ol&gt;
-  &lt;li&gt;BFS&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/graph-theory/basic-algo/2020/04/16/bfs.html&quot;&gt;BFS&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;HashMap&lt;/li&gt;
-  &lt;li&gt;Memoization&lt;/li&gt;
+  &lt;li&gt;Memoization - visited&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h1 id=&quot;풀이법&quot;&gt;풀이법:&lt;/h1&gt;
@@ -283,7 +392,12 @@ space-complexity면에서는 기존의 것보다 비효율적입니다.&lt;br /&
             &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">검색어, 채팅의 자동 완성 안에는 어떤 알고리즘을 쓸까?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트: 자물쇠와 열쇠</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html" rel="alternate" type="text/html" title="카카오 테스트: 자물쇠와 열쇠" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html">&lt;h1 id=&quot;핵심개념-및-팁&quot;&gt;핵심개념 및 팁:&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">검색어, 채팅의 자동 완성에 쓰이는 Trie에 대해 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트: 자물쇠와 열쇠</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html" rel="alternate" type="text/html" title="카카오 테스트: 자물쇠와 열쇠" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html">&lt;h1 id=&quot;핵심개념&quot;&gt;핵심개념&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;/misc/basic-algo/2020/04/17/matrix-rotation.html&quot;&gt;Matrix rotation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;팁&quot;&gt;팁&lt;/h1&gt;
 
 &lt;p&gt;첫 번쨰: &lt;strong&gt;효율적인 Time-complexity를 크게 고민하시지는 않아도 될 거 같습니다.&lt;/strong&gt;&lt;br /&gt;
 원체, N과 M의 최대 범위값이 크지 않아서 여러 번의 Nested-loop하셔도 통과가 가능합니다.&lt;br /&gt;

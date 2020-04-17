@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://localhost:4000/graph-theory/basic/2020/04/16/bfs.html</loc>
+        <loc>http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html</loc>
     </url>
     
     <url>
@@ -74,7 +78,23 @@
     
     
     <url>
+        <loc>http://localhost:4000/algorithm/basic-algo/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/ps/coding_test/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/graph-theory/</loc>
     </url>
     
     
