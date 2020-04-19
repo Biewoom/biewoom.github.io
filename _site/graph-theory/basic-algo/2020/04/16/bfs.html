@@ -34,7 +34,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-16T00:00:00+09:00" />
 <script type="application/ld+json">
-{"datePublished":"2020-04-16T00:00:00+09:00","@type":"BlogPosting","image":{"thumbnail":"/assets/images/algo/graph_theory/bfs/thumbnail.png","url":"http://localhost:4000/assets/images/algo/graph_theory/bfs/thumbnail.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logo/bw_logo.svg"},"name":"유정민"},"url":"http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html","author":{"@type":"Person","name":"유정민"},"description":"우리가 쓰는 지도앱 안에 쓰이는 BFS를 알아보자.","headline":"BFS:최단 경로의 비밀!","dateModified":"2020-04-16T00:00:00+09:00","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logo/bw_logo.svg"},"name":"유정민"},"headline":"BFS:최단 경로의 비밀!","dateModified":"2020-04-16T00:00:00+09:00","url":"http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html","datePublished":"2020-04-16T00:00:00+09:00","image":{"thumbnail":"/assets/images/algo/graph_theory/bfs/thumbnail.png","url":"http://localhost:4000/assets/images/algo/graph_theory/bfs/thumbnail.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html"},"author":{"@type":"Person","name":"유정민"},"description":"우리가 쓰는 지도앱 안에 쓰이는 BFS를 알아보자.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -255,7 +255,7 @@
 <strong>너비를 우선 탐색하기 때문에, 가장 가까운 노드 탐색이나, 주변에 있는 노드를 탐색</strong><br />
 하는 경우는 DFS보다 좀 더 효율적이라는 장점을 가집니다!<br /></p>
 
-<p>이 중 <strong>‘가장 가까운 노드 탐색’ 기능을</strong> 예로 들어 자세히 설명하겠습니다.<br /></p>
+<p>이 중 <strong>‘가장 가까운 노드 탐색’ 기능을</strong> 예와 함께 자세히 설명하겠습니다.<br /></p>
 
 <p>철수가 여행 중 배가 고파 짜장면을 먹을려고 하는데, 이 동네에는 3개의 중국집이 있습니다.<br />
 철수는 너무 배가 고파서 현재 위치에서 가장 가까운 중국집에 가서 짜장면을 먹으려고 합니다.<br /></p>
@@ -274,19 +274,19 @@
 <p>위처럼 구하면, <strong>이 동네에서 현 위치에서 가장 가까운 중국집은 황룡반점이다.</strong><br />
 라는 것을 알 수 있고, 철수는 현 위치에서 1M 떨어진 청룡반점으로 갈 것 입니다.<br /></p>
 
-<p>그런데 이 때 time-complexity를 구해보면, O(N+M) 입니다.<br />
-(이 떄, N = nodes의 수, M = Edges의 수 = 길의 수)<br />
-이는 <strong>모든 노드와 길을 가봐야지</strong> 최단 거리를 알 수 있다는 것이죠.<br />
-만약 동네가 커질수록, 즉 <strong>Nodes와 edges가 많아질수록 굉장히 비효율적이 됩니다.</strong><br /></p>
+<p>하지만 이는 <strong>모든 노드와 길을 가봐야지</strong> 최단 거리를 알 수 있다는 것이죠.<br />
+만약 동네가 커질수록, 즉 <strong>Nodes와 edges가 많아질수록 굉장히 비효율적이 됩니다.</strong><br />
+이 때 time-complexity를 구해보면, O(N+M) 입니다.<br />
+(이 떄, N = nodes의 수, M = Edges의 수 = 길의 수)<br /></p>
 
 <p>이 비효율성을 해결하기 위해서 BFS라는 알고리즘을 고안하게 되었습니다.<br /></p>
 
 <h1 id="bfs">BFS:</h1>
 <p>BFS를 이용한 풀이법은 <strong>거리를 기준으로 Greedy하게 문제를 접근해서 푸는 것</strong>입니다.<br />
-한마디로, <strong>가까운 거리의 노드부터 차례 차례 구하다 보면 가장 먼저 만난 노드가 정답이다.</strong><br />
+풀어 말하면, <strong>가까운 거리의 노드부터 차례 차례 구하다 보면 가장 먼저 만난 노드가 정답이다.</strong><br />
 라는 아이디어인데, 먼저, <strong>거리를 기준으로 노드를 구한다는 것을 설명하겠습니다.</strong><br /></p>
 
-<p>거리를 기준으로 노드를 구하다는 것은 그림으로 표한하면 아래와 같습니다.<br /></p>
+<p>거리를 기준으로 노드를 구하다는 것은 그림으로 표현하면 아래와 같습니다.<br /></p>
 
 <p><strong>1번 경우: 먼저 거리가 1m인 Node들을 구하는 경우입니다.</strong><br /></p>
 

@@ -16,7 +16,7 @@
 ---
 
 # 핵심 개념:
-1. [Trie]({% link _posts/datastructure/2020-04-14-Trie.md %})
+1. [Trie]({% link _posts/datastructure/non-linear/2020-04-14-Trie.md %})
 2. prefix and suffix
 3. string 길이
 

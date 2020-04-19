@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-17T21:38:25+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">카카오 테스트: 외벽 점검</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall.html" rel="alternate" type="text/html" title="카카오 테스트: 외벽 점검" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall.html">&lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-19T23:00:07+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">카카오 테스트: 외벽 점검</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall.html" rel="alternate" type="text/html" title="카카오 테스트: 외벽 점검" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall.html">&lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념&lt;/h1&gt;
 &lt;ol&gt;
   &lt;li&gt;Complete search&lt;/li&gt;
   &lt;li&gt;greedy&lt;/li&gt;
@@ -70,18 +70,112 @@ Ex) n= 12일떄, [1,5,6,10] -&amp;gt; 5선택 -&amp;gt; [5, 6, 10, 13] , [1,5,6,
                 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;traverse_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
                     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2020-카카오 채용-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Matrix-roatation:그림 90도 회전의 비밀!</title><link href="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html" rel="alternate" type="text/html" title="Matrix-roatation:그림 90도 회전의 비밀!" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation</id><content type="html" xml:base="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html">&lt;p&gt;PPT를 만들거나 포토샵을 수정할 때, 그림을 시계방향 또는 반시계방향으로&lt;br /&gt;
-90도, 180도, 270도 회전을 하신 적이 있을실거에요. &lt;br /&gt; 우리는 마우스를 이용해 돌리지만,
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2020-카카오 채용-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">HashTable: 전화번호 찾기의 비밀!</title><link href="http://localhost:4000/non-linear-ds/basic-ds/2020/04/17/Hashtable.html" rel="alternate" type="text/html" title="HashTable: 전화번호 찾기의 비밀!" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/non-linear-ds/basic-ds/2020/04/17/Hashtable</id><content type="html" xml:base="http://localhost:4000/non-linear-ds/basic-ds/2020/04/17/Hashtable.html">&lt;p&gt;휴대폰에서 전화번호 검색을 위해 상대방의 이름을 쳐서 검색한 적이 있으신가요?&lt;br /&gt;
+이 때, 내부에는 &lt;strong&gt;효율적인 검색&lt;/strong&gt;을 위해 &lt;strong&gt;HashTable&lt;/strong&gt; 를 이용하여 전화번호를 찾습니다.&lt;br /&gt;
+이 글에선 과연 &lt;strong&gt;HashTable는 무엇인지, 어떤 원리가 숨어있는 지&lt;/strong&gt;를 알아보겠습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;참조: HashTable은 기본적인 DS로 다른 알고리즘이나 DS에 정말 많이 쓰입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;hashtable은-어떤-기능을-하나요&quot;&gt;HashTable은 어떤 기능을 하나요?&lt;/h1&gt;
+&lt;p&gt;어떤 값을 빠른 시간에 Search하거나 값을 Update를 할 수 있는 자료 구조입니다.&lt;br /&gt;
+자세히 이야기하면, &lt;strong&gt;키(key)를 통해 얻고자 하는 값에 접근 하는 자료구조&lt;/strong&gt;입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;문제-제시&quot;&gt;문제 제시:&lt;/h1&gt;
+&lt;p&gt;여러기능 중 Search의 기능을 예와 함께 설명을 드리겠습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;한 시골 학교에 6명의 학생이 있는 반과 그 반의 선생님이 있습니다.&lt;br /&gt;
+어제 수학 시험을 쳤고 선생님은 각 학생의 수학 점수 기록을 가지고 있습니다.&lt;br /&gt;
+이 중 ‘재석’이라는 학생이 자신의 수학점수가 궁금해서 선생님을 찾아 왔습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Hashtable/problem.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위는 수학점수 기록이고, &lt;strong&gt;선생님은 어떻게 효율적으로 ‘재석’의 수학 점수를 알 수 있을까요?&lt;/strong&gt;&lt;br /&gt;
+※스스로 한 번 방법을 생각해봅시다!&lt;/p&gt;
+
+&lt;h1 id=&quot;brute-force하게-해봅시다&quot;&gt;Brute-force하게 해봅시다.&lt;/h1&gt;
+&lt;p&gt;단순하게 &lt;strong&gt;위에서부터 학생의 이름을 한 명씩 비교해서 찾을 수 있습니다.&lt;/strong&gt;&lt;br /&gt;
+그 과정은 아래와 같습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Hashtable/brute-force-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;우리가 찾는 건 ‘재석’의 학생이지만 데이터의 첫 번째 칸은 ‘동훈’ 학생입니다.&lt;br /&gt;
+따라서 다음으로 넘어갑니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Hashtable/brute-force-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 경우에도 ‘재석’ 학생의 데이터가 아닙니다.&lt;br /&gt;
+이처럼 이름이 찾는 이름이 아닐 경우에는 계속 다음 데이터로 넘어갑니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/non-linear/Hashtable/brute-force-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;마지막에 비로소 재석의 이름에 해당하는 데이터를 찾았습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;하지만 위 방법으로 진행했을 경우, &lt;strong&gt;최악의 경우 처음부터 모든 데이터를 검사해야 합니다.&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/ds/non-linear/Hashtable/string-compare.png&quot; alt=&quot;image&quot; height=&quot;20%&quot; width=&quot;20%&quot; /&gt;
+심지어 왼쪽처럼 &lt;strong&gt;이름을 비교하는 상황에도 시간 cost가 발생합니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Time-complexity를 보았을 때, 최악의 경우는 O(N*M)입니다.&lt;br /&gt;
+(이 때 N = 학생 수, M = 학생 이름의 길이)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;하나하나 비교하는 건 비효율적이고, 학생이 많으면 소모되는 시간은 기하급수적으로 커집니다.&lt;/strong&gt;&lt;br /&gt;
+이 비효율성을 줄이고자, 다음과 같은 HashTable이라는 자료구조가 고안되었습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;hashtable&quot;&gt;HashTable:&lt;/h1&gt;
+&lt;p&gt;이 문제를 해결하는 아이디어는 &lt;strong&gt;Hashing와 Dynamic-array의 마법을 이용하는 것&lt;/strong&gt;입니다.&lt;br /&gt;
+사실, 이 두 가지의 비밀 뒤에는 통계이론, lookUpTable 등 여러가지 고려할 것이 많습니다.&lt;br /&gt;
+하지만, 이 글에서는 &lt;strong&gt;HashTable의 전체적인 구조에 관해서만 간단히 알아보겠습니다.&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;참조 Dynamic-array의 마법을 알고 싶으면 &lt;a href=&quot;&quot;&gt;Dynamic-array&lt;/a&gt;&lt;br /&gt;
+참조 Hashing의 마법을 알고 싶으면 &lt;a href=&quot;&quot;&gt;Hashing&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;전체적인 구조:&lt;/strong&gt;&lt;br /&gt;
+※ 쉬운 이해를 위해, 몇 개의 전제 조건을 설정하겠습니다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;10개 slots의 slots-list로 시작&lt;/li&gt;
+  &lt;li&gt;사용자 임의의 한글-lookupTable&lt;/li&gt;
+  &lt;li&gt;사용자 임의의 String-Hash 함수&lt;/li&gt;
+  &lt;li&gt;Birthday-Paradox는 신경 쓰지 않음&lt;/li&gt;
+  &lt;li&gt;Hashing 함수로 인한 Duplicate-key는 신경 쓰지 않음&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;실제론, Birthday-paradox 같은 문제로 Collision이 생길 수 밖에 없습니다.&lt;br /&gt;
+이를 완화할 수 있는 전략은 몇 가지가 있습니다. &lt;a href=&quot;https://en.wikipedia.org/wiki/Hash_table&quot;&gt;더 알아보기&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;hashtable과-관련된-용어&quot;&gt;HashTable과 관련된 용어:&lt;/h1&gt;
+&lt;p&gt;구현 언어에 따라 또는 구현 방법에 따라 또는 바로 위에서 언급한 완화할 수 있는 전략에 따라&lt;br /&gt;
+이 HashTable의 이름은 조금씩 다릅니다. 그 중에는  HashMap, Map, Dictionary 있습니다.&lt;br /&gt;
+하지만 &lt;strong&gt;핵심은 Key-Value로 pair이 된 Collection이라는 것에서 같습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;참고로, Python에서는 Dictionary, Set이 대표적인 HashTable로 구현된 DataType입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Python에서는 Set이 Value가 Binary인 HashTable로 되어있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;실제-구현-by-python&quot;&gt;실제 구현 by Python&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;구현 아이디어:&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Dynamic-array&lt;/li&gt;
+  &lt;li&gt;Hash&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Code:&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>유정민</name></author><summary type="html">전화번호 검색, 아이디 검색 등 에 쓰이는 HashTable에 대해 알아보자</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/Hashtable/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/Hashtable/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Matrix-roatation:그림 90도 회전의 비밀!</title><link href="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html" rel="alternate" type="text/html" title="Matrix-roatation:그림 90도 회전의 비밀!" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation</id><content type="html" xml:base="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html">&lt;p&gt;PPT를 만들거나 포토샵을 수정할 때, 그림을 시계방향 또는 반시계방향으로&lt;br /&gt;
+90도, 180도, 270도 회전을 하신 적이 있으신가요? &lt;br /&gt; 우리는 마우스를 이용해 돌리지만,
 컴퓨터 안에서는 어떤 일이 벌어지고 있을까요?&lt;br /&gt;
 답부터 말하자면, 컴퓨터는 &lt;strong&gt;Matrix-rotation&lt;/strong&gt;을 이용해 그림을 90도 회전합니다.&lt;br /&gt;
-이 Matrix-rotation에 대해서 간단히 알아보도록 하겠습니다.&lt;br /&gt;&lt;/p&gt;
+이 &lt;strong&gt;Matrix-rotation&lt;/strong&gt;에 대해서 간단히 알아보도록 하겠습니다.&lt;br /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;참조- 여기서는 Inplace가 아닌 Extra memory를 쓴 matrix-rotation에 대한 설명입니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1 id=&quot;그림-파일은-어떤-모양인가&quot;&gt;그림 파일은 어떤 모양인가?&lt;/h1&gt;
-&lt;p&gt;주제에 들어가기 앞서서, 그림파일이란 건 무엇인지 아셔야합니다.&lt;br /&gt;
-간단하게 컴퓨터는 그림파일을 어떻게 인식하고 있는지 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;그림파일은-무엇인가&quot;&gt;그림파일은 무엇인가?&lt;/h1&gt;
+&lt;p&gt;주제에 들어가기 앞서서, &lt;strong&gt;그림파일&lt;/strong&gt; 이란 무엇인지 아셔야합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;정말 간단하게 컴퓨터는 그림파일을 어떻게 인식하고 있는지 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/pixel.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
@@ -89,12 +183,12 @@ Ex) n= 12일떄, [1,5,6,10] -&amp;gt; 5선택 -&amp;gt; [5, 6, 10, 13] , [1,5,6,
 &lt;strong&gt;각 Pixel들은 숫자의 행렬(Maxtrix) 형태로 구성되어 있습니다!&lt;/strong&gt;&lt;br /&gt;
 이 말은 결국 &lt;strong&gt;모든 그림은 큰 숫자의 행렬(Matrix)모양으로 존재하고 있다는 것입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;그림을-회전-시킨다는-건&quot;&gt;그림을 회전 시킨다는 건?&lt;/h1&gt;
+&lt;h1 id=&quot;그럼-그림을-회전-시킨다는-건&quot;&gt;그럼, 그림을 회전 시킨다는 건?&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/overview.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;결국 그림을 회전시킨다는 것은 다시 그림을 만드는 데, 그 그림의 형태는&lt;br /&gt;
-&lt;strong&gt;본래 그림의 행렬의 원소들을 적당한 패턴으로 재배열을 시켜 만든 행렬&lt;/strong&gt;입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;결국 그림을 회전시킨다는 것은 다시 그림을 만드는 데&lt;br /&gt;
+그 그림은 &lt;strong&gt;본래 그림의 행렬 원소를 적당한 패턴으로 재배열하여 만든 행렬&lt;/strong&gt;입니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;시계방향으로-90도로-회전&quot;&gt;시계방향으로 90도로 회전&lt;/h1&gt;
 
@@ -154,7 +248,7 @@ Ex) n= 12일떄, [1,5,6,10] -&amp;gt; 5선택 -&amp;gt; [5, 6, 10, 13] , [1,5,6,
 &lt;strong&gt;너비를 우선 탐색하기 때문에, 가장 가까운 노드 탐색이나, 주변에 있는 노드를 탐색&lt;/strong&gt;&lt;br /&gt;
 하는 경우는 DFS보다 좀 더 효율적이라는 장점을 가집니다!&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;이 중 &lt;strong&gt;‘가장 가까운 노드 탐색’ 기능을&lt;/strong&gt; 예로 들어 자세히 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;이 중 &lt;strong&gt;‘가장 가까운 노드 탐색’ 기능을&lt;/strong&gt; 예와 함께 자세히 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;철수가 여행 중 배가 고파 짜장면을 먹을려고 하는데, 이 동네에는 3개의 중국집이 있습니다.&lt;br /&gt;
 철수는 너무 배가 고파서 현재 위치에서 가장 가까운 중국집에 가서 짜장면을 먹으려고 합니다.&lt;br /&gt;&lt;/p&gt;
@@ -173,19 +267,19 @@ Ex) n= 12일떄, [1,5,6,10] -&amp;gt; 5선택 -&amp;gt; [5, 6, 10, 13] , [1,5,6,
 &lt;p&gt;위처럼 구하면, &lt;strong&gt;이 동네에서 현 위치에서 가장 가까운 중국집은 황룡반점이다.&lt;/strong&gt;&lt;br /&gt;
 라는 것을 알 수 있고, 철수는 현 위치에서 1M 떨어진 청룡반점으로 갈 것 입니다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;그런데 이 때 time-complexity를 구해보면, O(N+M) 입니다.&lt;br /&gt;
-(이 떄, N = nodes의 수, M = Edges의 수 = 길의 수)&lt;br /&gt;
-이는 &lt;strong&gt;모든 노드와 길을 가봐야지&lt;/strong&gt; 최단 거리를 알 수 있다는 것이죠.&lt;br /&gt;
-만약 동네가 커질수록, 즉 &lt;strong&gt;Nodes와 edges가 많아질수록 굉장히 비효율적이 됩니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;하지만 이는 &lt;strong&gt;모든 노드와 길을 가봐야지&lt;/strong&gt; 최단 거리를 알 수 있다는 것이죠.&lt;br /&gt;
+만약 동네가 커질수록, 즉 &lt;strong&gt;Nodes와 edges가 많아질수록 굉장히 비효율적이 됩니다.&lt;/strong&gt;&lt;br /&gt;
+이 때 time-complexity를 구해보면, O(N+M) 입니다.&lt;br /&gt;
+(이 떄, N = nodes의 수, M = Edges의 수 = 길의 수)&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;이 비효율성을 해결하기 위해서 BFS라는 알고리즘을 고안하게 되었습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;bfs&quot;&gt;BFS:&lt;/h1&gt;
 &lt;p&gt;BFS를 이용한 풀이법은 &lt;strong&gt;거리를 기준으로 Greedy하게 문제를 접근해서 푸는 것&lt;/strong&gt;입니다.&lt;br /&gt;
-한마디로, &lt;strong&gt;가까운 거리의 노드부터 차례 차례 구하다 보면 가장 먼저 만난 노드가 정답이다.&lt;/strong&gt;&lt;br /&gt;
+풀어 말하면, &lt;strong&gt;가까운 거리의 노드부터 차례 차례 구하다 보면 가장 먼저 만난 노드가 정답이다.&lt;/strong&gt;&lt;br /&gt;
 라는 아이디어인데, 먼저, &lt;strong&gt;거리를 기준으로 노드를 구한다는 것을 설명하겠습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;거리를 기준으로 노드를 구하다는 것은 그림으로 표한하면 아래와 같습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;거리를 기준으로 노드를 구하다는 것은 그림으로 표현하면 아래와 같습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;1번 경우: 먼저 거리가 1m인 Node들을 구하는 경우입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
