@@ -1,7 +1,7 @@
 ---
 layout: home
 entry_layout: list
-alt_title: "쉽고 재미있게 설명하자."
+alt_title: "간단하고 재미있게 설명하자."
 actions:
   - label: "Algorithm 같이 해요"
     icon: pdf
