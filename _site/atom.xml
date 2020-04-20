@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-20T22:13:26+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">카카오 테스트:기둥과 보 설치</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/20/pillar.html" rel="alternate" type="text/html" title="카카오 테스트:기둥과 보 설치" /><published>2020-04-20T00:00:00+09:00</published><updated>2020-04-20T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/20/pillar</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/20/pillar.html">&lt;p&gt;이 문제는 문제의 효율성 고려나 어려운 개념을 요구하는 게 아니라&lt;br /&gt;
-주어진 복잡한 instruction에 맞추어서 코드로 구현 할 수 있는지를 요구하는 문제입니다.&lt;br /&gt;
-따라서 전체과정을 한 눈에 알아볼 수 있게 도식화하는 능력과 깔끔한 코드를 짜는게 핵심이라고 생각합니다.&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-20T22:57:56+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">Bit-flags:Bit 인원보고 하겠습니다!</title><link href="http://localhost:4000/misc/basic-algo/2020/04/20/bit-flags.html" rel="alternate" type="text/html" title="Bit-flags:Bit 인원보고 하겠습니다!" /><published>2020-04-20T00:00:00+09:00</published><updated>2020-04-20T00:00:00+09:00</updated><id>http://localhost:4000/misc/basic-algo/2020/04/20/bit-flags</id><content type="html" xml:base="http://localhost:4000/misc/basic-algo/2020/04/20/bit-flags.html">&lt;p&gt;Test&lt;/p&gt;</content><author><name>유정민</name></author><summary type="html">Bits와 Bitwise 함수를 사용해서 현재 상태를 나타내는 법을 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/algo/misc/bit-flags/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/algo/misc/bit-flags/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트:기둥과 보 설치</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/20/pillar.html" rel="alternate" type="text/html" title="카카오 테스트:기둥과 보 설치" /><published>2020-04-20T00:00:00+09:00</published><updated>2020-04-20T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/20/pillar</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/20/pillar.html">&lt;p&gt;이 문제는 문제의 효율성 고려나 어려운 개념을 요구하는 게 아니라&lt;br /&gt;
+주어진 복잡한 instructions을 코드로 구현 할 수 있는 지를 묻는 문제입니다.&lt;br /&gt;
+따라서 전체과정을 도식화하는 능력과 깔끔한 코드를 짜는게 핵심이라고 생각합니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념:&lt;/h1&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;/misc/basic-algo/2020/04/17/matrix-rotation.html&quot;&gt;Matrix rotation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Bit manipulation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&quot;&gt;Bit-flag&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h1 id=&quot;tip&quot;&gt;TIP:&lt;/h1&gt;
@@ -25,7 +25,8 @@ Ex) 0000: 아무것도 없다, 1000: 기둥 아랫부분만 있다. ,1100: 기�
 혹시 테스트가 13번 이후로 다 틀린다면, 삭제 부분에서 문제가 있을 확률이 큽니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;풀이법&quot;&gt;풀이법&lt;/h1&gt;
-&lt;p&gt;저 같은 경우 이걸 아래와 같은 과정을 도식화하여 풀었습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;저 같은 경우 이걸 아래와 같은 과정을 도식화하여 풀었습니다.&lt;br /&gt;
+워낙 코드가 길어, 제 코드 리딩은 도움이 안될 거 같습니다.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;삭제할 좌표에 실제로 보 또는 기둥이 존재하는 지 판단 (없을시 return)&lt;/li&gt;
@@ -34,6 +35,8 @@ Ex) 0000: 아무것도 없다, 1000: 기둥 아랫부분만 있다. ,1100: 기�
   &lt;li&gt;영향을 끼칠 좌표들이 모두 유효하다면 삭제 그대로 진행&lt;/li&gt;
   &lt;li&gt;하나라도 유효하지 않으면, 다시 삭제했던 구조물 재설치&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;h1 id=&quot;구현-by-python&quot;&gt;구현 by Python&lt;/h1&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
