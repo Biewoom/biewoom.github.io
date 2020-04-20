@@ -289,8 +289,8 @@
 <p>찾는 과정은 Time-complexity를 보았을 때, 최악의 경우는 O(N*M)입니다.<br />
 (이 때 N = 학생 수, M = 학생 이름의 길이)</p>
 
-<p>더 나아가, ‘재석’ 뿐 아니라 다른 학생들 모두 수학 점수가 궁금해서 찾아오면 어떡할까요?<br />
-<strong>매 학생이 물을 때마다, 모든 데이터를 한번씩 체크해야 하는 건 굉장히 비효율적입니다.</strong><br />
+<p>더 나아가, ‘재석’ 뿐 아니라 다른 학생들도 수학 점수가 궁금해서 찾아오면 어떡할까요?<br />
+<strong>매 학생이 물을 때마다, 모든 데이터를 체크해야 하고, 이건 굉장히 비효율적입니다.</strong><br />
 만약 K명의 학생이 물어본다고 가정하면 시간 소모는 O(N*M *K)가 됩니다.<br />
 <strong>따라서 물어보는 학생이 많으면 많을 수록 소모되는 시간은 기하급수적으로 커집니다.</strong><br />
 이 비효율성을 줄이고자, 다음과 같은 HashTable이라는 자료구조가 고안되었습니다.<br /></p>
@@ -360,11 +360,11 @@ Hashing 함수는 다음과 같은 두 단계로 이루어져있습니다.</p>
 
 <p><img src="/assets/images/ds/non-linear/Hashtable/HashTable-find1.png" alt="image" /></p>
 
-<p>데이터를 찾는 과정은 넣은 과정과 비슷합니다.</p>
+<p>데이터를 찾는 과정은 데이터를 넣을 때의 과정과 비슷합니다.</p>
 <ol>
   <li>Hash-func을 통해서 ‘재석’의 Index 값인 4를 찾는다.</li>
   <li>slots에서 index가 4인 데이터에 접근한다.</li>
-  <li>index가 4인 slot에 저장된 데이터를 return 한다.</li>
+  <li>index가 4인 slot에 저장된 데이터인 ‘100’을 return 한다.</li>
 </ol>
 
 <p>아래는 Keys에 없는 ‘홍철’ 학생의 데이터를 찾는 과정입니다.<br /></p>
@@ -373,11 +373,11 @@ Hashing 함수는 다음과 같은 두 단계로 이루어져있습니다.</p>
 
 <p>만약 기존의 키에 없었던 ‘홍철’이라는 학생 데이터를 찾으려고 하면<br />
 위처럼 Hash-func에 의해 index가 1인 slots에 접근하게됩니다.<br />
-하지만 index가 1인 slot에는 아무런 데이터가 저장되어있지 않습니다.<br /></p>
+하지만, index가 1인 slot에는 데이터가 없고 따라서 <strong>Null</strong>을 Return 합니다.<br /></p>
 
 <blockquote>
-  <p>실제론, Birthday-paradox 같은 문제로 Collision이 생길 수 밖에 없습니다.<br />
-이를 해결하기 위한 전략으로는 Openaddress나 chaning 등 몇 가지가 있습니다.<br />
+  <p>실제론, Birthday-paradox 같은 문제로 Collision이란 것이 생깁니다.<br />
+이를 해결하기 위한 전략으로는 Open-address나 channing 등 몇 가지가 있습니다.<br />
 <a href="https://en.wikipedia.org/wiki/Hash_table">더 자세히 알아보기</a><br /></p>
 </blockquote>
 
@@ -387,7 +387,7 @@ Hashing 함수는 다음과 같은 두 단계로 이루어져있습니다.</p>
 
 <p><strong>Big-O notation으로 따지면, O(N*M)의 시간이 걸립니다.</strong><br />
 (이 때, N = 넣고자 하는 학생 수, M = 각 학생의 이름 길이)<br />
-이 경우 이전 방법보다 시간효율성이 좋다고는 하기 어려울거 같습니다.<br /></p>
+넣을 때의 시점에선 이전 방법보다 효율성이 좋다고는 하기 어려울 거 같습니다.<br /></p>
 
 <p>하지만, 물어보는 학생의 경우, 즉 쿼리를 처리할 때는 이전보다 훨씬 좋습니다.<br />
 이전에는 매번 가지고 있던 모든 데이터를 체크해야 했지만 이번에는 그렇지 않습니다.<br />
@@ -402,8 +402,8 @@ O(1)으로 Linear하게 바로 원하는 값에 접근할 수 있습니다.<br /
 따라서, 이전보다 <strong>훨씬 좋은 Query 처리 속도를 가진다고 할 수 있습니다.</strong><br /></p>
 
 <h1 id="hashtable과-관련된-용어">HashTable과 관련된 용어:</h1>
-<p>구현 언어에 따라 또는 구현 방법에 따라 또는 나중에 이야기할 전략에 따라<br />
-HashTable 관련 용어들은 조금씩 다릅니다. 그 중에는  HashMap, Map, Dictionary 있습니다.<br />
+<p>구현 언어에 따라 또는 구현 방법에 따라 또는 잠깐 언급한 Collision 전략에 따라<br />
+관련 용어들은 조금씩 다릅니다. 자주 쓰이는 것들로 <strong>HashMap, Map, Dictionary</strong>가 있습니다.<br />
 하지만 <strong>핵심은 Key-Value로 pair이 된 Collection이라는 것에서 같습니다.</strong><br /></p>
 
 <p>참고로, Python에서는 Dictionary, Set이 대표적인 HashTable로 구현된 DataType입니다.<br /></p>
