@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/linear-ds/basic-ds/2020/04/25/linked-list.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/linear-ds/basic-ds/2020/04/24/Dynamic-array.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/20/pillar.html</loc>
     </url>
     

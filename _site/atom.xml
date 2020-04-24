@@ -1,4 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-24T18:59:50+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">BitMask:Bit 인원보고 하겠습니다!</title><link href="http://localhost:4000/misc/basic-algo/2020/04/20/bit-mask.html" rel="alternate" type="text/html" title="BitMask:Bit 인원보고 하겠습니다!" /><published>2020-04-20T00:00:00+09:00</published><updated>2020-04-20T00:00:00+09:00</updated><id>http://localhost:4000/misc/basic-algo/2020/04/20/bit-mask</id><content type="html" xml:base="http://localhost:4000/misc/basic-algo/2020/04/20/bit-mask.html">&lt;p&gt;우리가 군대의 점호시간에 현재 부대원을 보고함으로서, 현재 상태를 나타내듯이&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-04-25T00:35:14+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">Linked-list: RAM과 포인터의 마법!</title><link href="http://localhost:4000/linear-ds/basic-ds/2020/04/25/linked-list.html" rel="alternate" type="text/html" title="Linked-list: RAM과 포인터의 마법!" /><published>2020-04-25T00:00:00+09:00</published><updated>2020-04-25T00:00:00+09:00</updated><id>http://localhost:4000/linear-ds/basic-ds/2020/04/25/linked-list</id><content type="html" xml:base="http://localhost:4000/linear-ds/basic-ds/2020/04/25/linked-list.html">&lt;p&gt;’ &lt;strong&gt;제목 그대로’ RAM의 마법이자, 자료 구조들의 아버지인 Linked-list&lt;/strong&gt; 입니다.&lt;br /&gt;
+이 글에서는 RAM과 linked-list에 대해서 설명 하겠습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;ram이란&quot;&gt;RAM이란?&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/linear/dynamic-array/ram.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 계속 말하는 RAM은 우리가 평소에 말하는 하드웨어 “RAM” 그거 맞습니다.&lt;br /&gt;
+&lt;strong&gt;이 RAM에 대해서 알아야, Linked-list의 가치를 제대로 이해 할 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/linear/dynamic-array/cpu-ram.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;RAM은 위 그림 처럼 CPU 옆에 붙어서 우리의 명령코드를 수행합니다.&lt;br /&gt;
+CPU가 일련의 명령들을 수행하는 동안 값과 자료들을 읽고 기억하는 공간입니다.&lt;br /&gt;
+ROM과는 다르게, 전원이 꺼지거나 하면 값이 사라지는 volatile 메모리입니다.&lt;br /&gt;
+이 까지의 내용은 많은 분들이 이미 아시는 내용일 거 라고 생각합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;하지만 우리가 이 글에서 주목 해야할 것은 바로 아래의 내용입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;RAM은 &lt;strong&gt;Random Access 방식&lt;/strong&gt;으로 데이터를 읽거나 기억하는 메모리입니다.&lt;br /&gt;
+그럼 Random Access 방식은 멀까요?&lt;br /&gt;
+결론부터 이야기하면, &lt;strong&gt;램에 저장된 어느 데이터든 접근 시간이 거의 동일하다.&lt;/strong&gt;&lt;br /&gt;
+비유을 들자면, &lt;strong&gt;주소만 알면 그 주소로 순간 이동 할 수 있다.&lt;/strong&gt; 입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;랩 안에는 공간이 허용하는 한 집을 짓고, 집을 지을 때마다 주소 값이 생깁니다.&lt;br /&gt;
+&lt;strong&gt;우리가 어떤 주소를 알고 그것을 RAM에게 준다면 그 주소로 순간이동 하는 거죠&lt;/strong&gt;.&lt;br /&gt;
+그림으로 표현하면 램(RAM)은 아래와 같다고 생각하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/linear/dynamic-array/Ram-address.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 Linked-list는 Pointer 라는 것을 통해 RAM의 특징을 구현한 자료구조입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;다른 방법으로는 연속성을 통해 RAM의 특징을 구현한 &lt;a href=&quot;/linear-ds/basic-ds/2020/04/24/Dynamic-array.html&quot;&gt;Dynamic-array&lt;/a&gt;가 있습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>유정민</name></author><summary type="html">가장 기본이 되는 Linked-list에 대해서 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/linear/linked-list/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/linear/linked-list/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Dynamic-array: RAM과 연속성의 마법!</title><link href="http://localhost:4000/linear-ds/basic-ds/2020/04/24/Dynamic-array.html" rel="alternate" type="text/html" title="Dynamic-array: RAM과 연속성의 마법!" /><published>2020-04-24T00:00:00+09:00</published><updated>2020-04-24T00:00:00+09:00</updated><id>http://localhost:4000/linear-ds/basic-ds/2020/04/24/Dynamic-array</id><content type="html" xml:base="http://localhost:4000/linear-ds/basic-ds/2020/04/24/Dynamic-array.html">&lt;p&gt;’ &lt;strong&gt;제목 그대로’ RAM의 마법이자, 자료 구조들의 어머니인 Dynamic-array&lt;/strong&gt; 입니다.&lt;br /&gt;
+이 글에서는 RAM과 Dynamic-array에 대해서 설명 하겠습니다.&lt;br /&gt;
+※이 글은 Array의 내용을 통합해서 이야기 하고 있습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;ram이란&quot;&gt;RAM이란?&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/linear/dynamic-array/ram.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 계속 말하는 RAM은 우리가 평소에 말하는 하드웨어 “RAM” 그거 맞습니다.&lt;br /&gt;
+&lt;strong&gt;이 RAM에 대해서 알아야, Dynamic-array의 가치를 제대로 이해 할 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/linear/dynamic-array/cpu-ram.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;RAM은 위 그림 처럼 CPU 옆에 붙어서 우리의 명령코드를 수행합니다.&lt;br /&gt;
+CPU가 일련의 명령들을 수행하는 동안 값과 자료들을 읽고 기억하는 공간입니다.&lt;br /&gt;
+ROM과는 다르게, 전원이 꺼지거나 하면 값이 사라지는 volatile 메모리입니다.&lt;br /&gt;
+이 까지의 내용은 많은 분들이 이미 아시는 내용일 거 라고 생각합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;하지만 우리가 이 글에서 주목 해야할 것은 바로 아래의 내용입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;RAM은 &lt;strong&gt;Random Access 방식&lt;/strong&gt;으로 데이터를 읽거나 기억하는 메모리입니다.&lt;br /&gt;
+그럼 Random Access 방식은 멀까요?&lt;br /&gt;
+결론부터 이야기하면, &lt;strong&gt;램에 저장된 어느 데이터든 접근 시간이 거의 동일하다.&lt;/strong&gt;&lt;br /&gt;
+비유을 들자면, &lt;strong&gt;주소만 알면 그 주소로 순간 이동 할 수 있다.&lt;/strong&gt; 입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;랩 안에는 공간이 허용하는 한 집을 짓고, 집을 지을 때마다 주소 값이 생깁니다.&lt;br /&gt;
+&lt;strong&gt;우리가 어떤 주소를 알고 그것을 RAM에게 준다면 그 주소로 순간이동 하는 거죠&lt;/strong&gt;.&lt;br /&gt;
+그림으로 표현하면 램(RAM)은 아래와 같다고 생각하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ds/linear/dynamic-array/Ram-address.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 Dynamic-array는 Array의 연속성을 통해 RAM의 특징을 구현한 자료구조입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;다른 방법으로는 Pointer를 통해 RAM의 특징을 구현한 &lt;a href=&quot;/linear-ds/basic-ds/2020/04/25/linked-list.html&quot;&gt;Linked-list&lt;/a&gt;가 있습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>유정민</name></author><summary type="html">가장 기본이 되는 Dynamic-array와 Array에 대해서 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/linear/dynamic-array/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/linear/dynamic-array/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">BitMask:Bit 인원보고 하겠습니다!</title><link href="http://localhost:4000/misc/basic-algo/2020/04/20/bit-mask.html" rel="alternate" type="text/html" title="BitMask:Bit 인원보고 하겠습니다!" /><published>2020-04-20T00:00:00+09:00</published><updated>2020-04-20T00:00:00+09:00</updated><id>http://localhost:4000/misc/basic-algo/2020/04/20/bit-mask</id><content type="html" xml:base="http://localhost:4000/misc/basic-algo/2020/04/20/bit-mask.html">&lt;p&gt;우리가 군대의 점호시간에 현재 부대원을 보고함으로서, 현재 상태를 나타내듯이&lt;br /&gt;
 프로그램을 구현 하는 과정 중, 많은 부분에서 현재 상태를 체크하고 보고하는 일이&lt;br /&gt;
 많습니다. &lt;strong&gt;Bit를 이용한 BitMask로 상태를 표시&lt;/strong&gt;하면 효율적일 때가 많습니다.&lt;br /&gt;
 이 글에서는 &lt;strong&gt;BitMask가 무엇인지? 어떻게 쓰이는 지에 대해서 알아보겠습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
@@ -15,7 +80,7 @@
 
 &lt;p&gt;위 같은 사실은 우리가 “오호 2진법이군!”만 하고 넘어갈 것이 아니라&lt;br /&gt;
 우리의 알고리즘에도 이 Bit성질을 적용할 수 있고 실제 구현에서도 자주 이용합니다.&lt;br /&gt;
-&lt;strong&gt;BitMask란 bit를 이용해 우리의 얼굴(mask)처럼 현재 상태를 표현한다. 로 이해하면 됩니다.&lt;/strong&gt;&lt;br /&gt;
+BitMask란 ‘&lt;strong&gt;bit를 이용해 우리의 얼굴(mask)처럼 현재 상태를 표현한다.&lt;/strong&gt;‘로 이해하면 됩니다.&lt;br /&gt;
 아래에서는 이 bit 성질을 이용한 BitMask의 기능에 대해서 알아보겠습니다.&lt;br /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;ALU의 회로나 CPU구조를 아신다면 더 깊은 이해가 됩니다.&lt;/p&gt;
@@ -23,25 +88,29 @@
 
 &lt;h1 id=&quot;어떤-기능을-할-수-있는가&quot;&gt;어떤 기능을 할 수 있는가?&lt;/h1&gt;
 &lt;p&gt;BitMask는 &lt;strong&gt;현재 상태를 표현, 변형 또는 비교 등의 기능을 수행 할 수 있습니다.&lt;/strong&gt;&lt;br /&gt;
-이 상태를 변형하거나 비교는 Bitwise함수를 이용하게 되는 경우가 많습니다.&lt;br /&gt;&lt;/p&gt;
+이 상태를 변형하거나 비교는 &lt;strong&gt;Bitwise함수를 이용하게 되는 경우가 많습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Bitwise함수를 이용하는 이유는 각 함수들은 ALU의 OR 또는 AND Gate 등을 바로&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;이용하게 됨으로 CPU에서 한 번에 계산하여, 효율성을 훨씬 높일 수 있기 때문입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bitwise함수를 이용하는 이유는 이 함수들은 ALU 안의 OR 또는 AND Gate 등을 활용해&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;각 bit 단위 연산을 CPU에서 한 번에 계산하여, 효율성을 훨씬 높일 수 있기 때문입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;&quot;&gt;BitWise 함수 알아보기&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;BitMask의 기능들은 아래의 예와 함께 설명을 하겠습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;BitMask의 기능들은 아래의 문제와 함께 설명을 하겠습니다.&lt;br /&gt;&lt;/p&gt;
 &lt;h1 id=&quot;문제-제시&quot;&gt;문제 제시&lt;/h1&gt;
 
 &lt;p&gt;한 반에 학생 세 명이 있습니다. 어느 날 이 반에서 깜짝 조별 시험을 치기로 하였습니다.&lt;br /&gt;
-그 시험 과목은 전형적인 과목인 ‘국영수사과’ 로 5개이고, 오픈북 시험을 치기로 하였습니다.&lt;br /&gt;
-시험은 쉬워서, 교과서만 있다면 해당 과목은 백점을 맞습니다. 하지만 없다면 틀리게 됩니다.&lt;br /&gt;
+시험에서 요구하는 건 ‘국영수사과’ 로 5개 과목이고, 오픈북 시험을 치기로 하였습니다.&lt;br /&gt;
+시험은 쉬워서, 교과서만 있다면 학생은 과목에 해당되는 문제는 다 맞을 수 있습니다.&lt;br /&gt;
+하지만 어떤 과목에 해당되는 교과서가 없다면 학생은 틀리게 될 것 입니다.&lt;br /&gt;
 최대 두 명까지 조를 짤수 있습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;어떤 학생과 어떤 학생이 조를 짜야지 모든 과목 백점을 맞는 조가 나올 수 있을까요?&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;어떻게 하면 위의 답을 효율적으로 구할 수 있을까요?&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/bit-mask/problem.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;위는 학생들의 가방과 가방 안에 있는 교과서들입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;위는 학생들의 가방과 가방 안에 있는 교과서들입니다.&lt;br /&gt;
+&lt;strong&gt;어떤 학생과 어떤 학생이 조를 짜야지 무조건 백점을 맞는 조가 나올 수 있을까요?&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;어떻게 하면 위의 답을 효율적으로 구할 수 있을까요?&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
 &lt;h1 id=&quot;주먹구구식-방법&quot;&gt;주먹구구식 방법:&lt;/h1&gt;
 &lt;p&gt;가장 쉬운 방법으로는 &lt;strong&gt;만들 수 있는 모든 조를 짜보고 조건이 맞는 지 확인하는 것입니다.&lt;/strong&gt;&lt;br /&gt;
 조건이 맞다는 것은 &lt;strong&gt;각각 만든 조가 모든 교과서를 가지고 있는 지를 확인하는 것입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
@@ -99,12 +168,8 @@
 &lt;strong&gt;이 경우의 수는 O(2 * M) (이 떄, M = 학생 가방 안에 있는 교과서 수)입니다.&lt;/strong&gt;&lt;br /&gt;
 따라서 위 값들을 곱해서 나온 전체 시간효율성은 O((N * N-1)* M)입니다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;위 두 가지 과정 중 &lt;strong&gt;교과서를 다 모아서 검사하는 과정은 BitMasks를 이용하면&lt;/strong&gt;&lt;br /&gt;
-이전보다 훨씬 효율적으로 수행할 수 있습니다.&lt;br /&gt;
-아래를 이해하시려면 Bitwise 함수를 먼저 이해하셔야 합니다.&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;&quot;&gt;BitWise 함수 알아보기&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;위 두 가지 과정 중 &lt;strong&gt;교과서를 다 모아서 검사하는 과정은 BitMasks와&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Bitwise 함수들을 이용하면 이전보다 훨씬 효율적으로 수행할 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;bitmask&quot;&gt;BitMask&lt;/h1&gt;
 &lt;p&gt;위 문제에서 BitMask의 아이디어는 다음과 같습니다.&lt;br /&gt;
@@ -149,7 +214,7 @@
 
 &lt;h1 id=&quot;bitmask-평가&quot;&gt;BitMask 평가:&lt;/h1&gt;
 &lt;p&gt;처음의 주먹구구식 방법과는 다르게 data-preprocessing 시간이 걸립니다.&lt;br /&gt;
-이유는 기존의 List로 받은 값을 bitMask로 바꿔야 하기 때문이죠.&lt;br /&gt;&lt;/p&gt;
+이유는 기존의 list 형태로 받은 책들을 가방의 bitMask로 바꿔야 하기 때문이죠.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;하지만 그 후에 그룹의 상태를 얻을 때는 이전에 O(2 * M)의 시간이 걸렸던 것과&lt;br /&gt;
 다르게, &lt;strong&gt;O(1)로 가능합니다. Or operater을 사용해서 모든 책 유무를 한 번에&lt;/strong&gt;&lt;br /&gt;
@@ -160,7 +225,7 @@
 &lt;p&gt;&lt;strong&gt;한계점:&lt;/strong&gt;&lt;br /&gt;
 이 문제처럼 유/무 처럼 0과 1로만 상태 표현이 가능하면 BitMask가 효과적입니다.&lt;br /&gt;
 그러나 만약 ‘책은 있지만 반이 찢어진 상태’, ‘책은 있지만 1/4만 있는 상태’처럼&lt;br /&gt;
-0/1로 bit가 책의 모든 상태를 설명하지 못하는 경우가 있다면, 조금 복잡해 집니다.&lt;br /&gt;&lt;/p&gt;
+0과 1로 책의 상태를 설명하지 못하는 경우가 있다면, 조금 복잡해 집니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;이를 해결하기 위해 n개의 bit를 하나로 묶어 책 상태를 표현할 수 있습니다.&lt;br /&gt;
 하지만, &lt;strong&gt;고려 해야할 상태가 많은 경우에는 이 과정에서 비효율성이 일어날 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
@@ -361,78 +426,7 @@ Ex) 0000: 아무것도 없다, 1000: 기둥 아랫부분만 있다. ,1100: 기�
     &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2020 카카오-채용 100% 친절 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Matrix-roatation:그림 90도 회전의 비밀!</title><link href="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html" rel="alternate" type="text/html" title="Matrix-roatation:그림 90도 회전의 비밀!" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation</id><content type="html" xml:base="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html">&lt;p&gt;PPT를 만들거나 포토샵을 수정할 때, 그림을 시계방향 또는 반시계방향으로&lt;br /&gt;
-90도, 180도, 270도 회전을 하신 적이 있으신가요? &lt;br /&gt; 우리는 마우스를 이용해 돌리지만,
-컴퓨터 안에서는 어떤 일이 벌어지고 있을까요?&lt;br /&gt;
-답부터 말하자면, 컴퓨터는 &lt;strong&gt;Matrix-rotation&lt;/strong&gt;을 이용해 그림을 90도 회전합니다.&lt;br /&gt;
-이 &lt;strong&gt;Matrix-rotation&lt;/strong&gt;에 대해서 간단히 알아보도록 하겠습니다.&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;참조- 여기서는 Inplace가 아닌 Extra memory를 쓴 matrix-rotation에 대한 설명입니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;그림파일은-무엇인가&quot;&gt;그림파일은 무엇인가?&lt;/h1&gt;
-&lt;p&gt;주제에 들어가기 앞서서, &lt;strong&gt;그림파일&lt;/strong&gt; 이란 무엇인지 아셔야합니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;정말 간단하게 컴퓨터는 그림파일을 어떻게 인식하고 있는지 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/pixel.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;정말 간단하게 설명하면, 위 그림처럼 &lt;strong&gt;각 그림은 작은 Pixel들로 이루어져 있고&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;각 Pixel들은 숫자의 행렬(Maxtrix) 형태로 구성되어 있습니다!&lt;/strong&gt;&lt;br /&gt;
-이 말은 결국 &lt;strong&gt;모든 그림은 큰 숫자의 행렬(Matrix)모양으로 존재하고 있다는 것입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;그럼-그림을-회전-시킨다는-건&quot;&gt;그럼, 그림을 회전 시킨다는 건?&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/overview.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;결국 그림을 회전시킨다는 것은 다시 그림을 만드는 데&lt;br /&gt;
-그 그림은 &lt;strong&gt;본래 그림의 행렬 원소를 적당한 패턴으로 재배열하여 만든 행렬&lt;/strong&gt;입니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;시계방향으로-90도로-회전&quot;&gt;시계방향으로 90도로 회전&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/clockwise.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위와 같이 시계방향일 때, 행렬도 똑같이 90도를 회전시킨다고 상상하고 돌리면&lt;br /&gt;
-행렬로 생각했을 때는 &lt;strong&gt;행렬의 좌표는 아래와 같은 패턴을 따른다는 것을 알 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/clockwise-matrix.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;패턴에 따르면, 행렬 좌표로 생각했을 때 &lt;strong&gt;새로운 행렬의 x좌표 = 기존의 y좌표이고&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;새로운 행렬의 y좌표 = 행렬의 크기 - 기존의 x좌표 - 1&lt;/strong&gt; 입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;구현-by-python&quot;&gt;구현 by Python&lt;/h2&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Clockwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;반시계방향으로-90도로-회전&quot;&gt;반시계방향으로 90도로 회전&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/counterclockwise.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위와 같이 반시계방향일 때, 행렬도 똑같이 90도를 회전시킨다고 상상하고 돌리면&lt;br /&gt;
-행렬로 생각했을 때는 &lt;strong&gt;행렬의 좌표는 아래와 같은 패턴을 따른다는 것을 알 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/counterclockwise-matrix.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;패턴에 따르면, &lt;strong&gt;새로운 행렬의 x좌표 = 행렬의 크기 - 기존의 y좌표 - 1 이고&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;새로운 행렬의 y좌표 = 기존의 x좌표&lt;/strong&gt; 입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;구현-by-python-1&quot;&gt;구현 by Python&lt;/h2&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Counterclockwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;돌리고자 하는 각도가 180, 270일 떄는?&lt;/strong&gt;&lt;br /&gt;
-이미 아시겠지만, 위의 과정들을 연속해서 하면 됩니다.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>유정민</name></author><summary type="html">그림 90도 회전에 쓰는 matrix-rotation에 대해서 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/algo/misc/matrix-rotation/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/algo/misc/matrix-rotation/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트: 외벽 점검</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall.html" rel="alternate" type="text/html" title="카카오 테스트: 외벽 점검" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall.html">&lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2020 카카오-채용 100% 친절 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트: 외벽 점검</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall.html" rel="alternate" type="text/html" title="카카오 테스트: 외벽 점검" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/17/wall.html">&lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념&lt;/h1&gt;
 &lt;ol&gt;
   &lt;li&gt;Complete search&lt;/li&gt;
   &lt;li&gt;greedy&lt;/li&gt;
@@ -723,7 +717,78 @@ O(1)으로 Linear하게 바로 원하는 값에 접근할 수 있습니다.&lt;b
 &lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">전화번호 검색, 아이디 검색 등 에 쓰이는 HashTable에 대해 알아보자</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/Hashtable/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/Hashtable/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">BFS:최단 경로의 비밀!</title><link href="http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html" rel="alternate" type="text/html" title="BFS:최단 경로의 비밀!" /><published>2020-04-16T00:00:00+09:00</published><updated>2020-04-16T00:00:00+09:00</updated><id>http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs</id><content type="html" xml:base="http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html">&lt;p&gt;&lt;strong&gt;지도 앱을 이용해 최단 경로를 찾거나 주변에 가까운 음식점은 어떤 것이 있는지&lt;/strong&gt;&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">전화번호 검색, 아이디 검색 등 에 쓰이는 HashTable에 대해 알아보자</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/Hashtable/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/Hashtable/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Matrix-roatation:그림 90도 회전의 비밀!</title><link href="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html" rel="alternate" type="text/html" title="Matrix-roatation:그림 90도 회전의 비밀!" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation</id><content type="html" xml:base="http://localhost:4000/misc/basic-algo/2020/04/17/matrix-rotation.html">&lt;p&gt;PPT를 만들거나 포토샵을 수정할 때, 그림을 시계방향 또는 반시계방향으로&lt;br /&gt;
+90도, 180도, 270도 회전을 하신 적이 있으신가요? &lt;br /&gt; 우리는 마우스를 이용해 돌리지만,
+컴퓨터 안에서는 어떤 일이 벌어지고 있을까요?&lt;br /&gt;
+답부터 말하자면, 컴퓨터는 &lt;strong&gt;Matrix-rotation&lt;/strong&gt;을 이용해 그림을 90도 회전합니다.&lt;br /&gt;
+이 &lt;strong&gt;Matrix-rotation&lt;/strong&gt;에 대해서 간단히 알아보도록 하겠습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;참조- 여기서는 Inplace가 아닌 Extra memory를 쓴 matrix-rotation에 대한 설명입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;그림파일은-무엇인가&quot;&gt;그림파일은 무엇인가?&lt;/h1&gt;
+&lt;p&gt;주제에 들어가기 앞서서, &lt;strong&gt;그림파일&lt;/strong&gt; 이란 무엇인지 아셔야합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;정말 간단하게 컴퓨터는 그림파일을 어떻게 인식하고 있는지 설명하겠습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/pixel.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;정말 간단하게 설명하면, 위 그림처럼 &lt;strong&gt;각 그림은 작은 Pixel들로 이루어져 있고&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;각 Pixel들은 숫자의 행렬(Maxtrix) 형태로 구성되어 있습니다!&lt;/strong&gt;&lt;br /&gt;
+이 말은 결국 &lt;strong&gt;모든 그림은 큰 숫자의 행렬(Matrix)모양으로 존재하고 있다는 것입니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;그럼-그림을-회전-시킨다는-건&quot;&gt;그럼, 그림을 회전 시킨다는 건?&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/overview.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;결국 그림을 회전시킨다는 것은 다시 그림을 만드는 데&lt;br /&gt;
+그 그림은 &lt;strong&gt;본래 그림의 행렬 원소를 적당한 패턴으로 재배열하여 만든 행렬&lt;/strong&gt;입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;시계방향으로-90도로-회전&quot;&gt;시계방향으로 90도로 회전&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/clockwise.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위와 같이 시계방향일 때, 행렬도 똑같이 90도를 회전시킨다고 상상하고 돌리면&lt;br /&gt;
+행렬로 생각했을 때는 &lt;strong&gt;행렬의 좌표는 아래와 같은 패턴을 따른다는 것을 알 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/clockwise-matrix.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;패턴에 따르면, 행렬 좌표로 생각했을 때 &lt;strong&gt;새로운 행렬의 x좌표 = 기존의 y좌표이고&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;새로운 행렬의 y좌표 = 행렬의 크기 - 기존의 x좌표 - 1&lt;/strong&gt; 입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;구현-by-python&quot;&gt;구현 by Python&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Clockwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;반시계방향으로-90도로-회전&quot;&gt;반시계방향으로 90도로 회전&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/counterclockwise.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위와 같이 반시계방향일 때, 행렬도 똑같이 90도를 회전시킨다고 상상하고 돌리면&lt;br /&gt;
+행렬로 생각했을 때는 &lt;strong&gt;행렬의 좌표는 아래와 같은 패턴을 따른다는 것을 알 수 있습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/algo/misc/matrix-rotation/counterclockwise-matrix.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;패턴에 따르면, &lt;strong&gt;새로운 행렬의 x좌표 = 행렬의 크기 - 기존의 y좌표 - 1 이고&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;새로운 행렬의 y좌표 = 기존의 x좌표&lt;/strong&gt; 입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;구현-by-python-1&quot;&gt;구현 by Python&lt;/h2&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Counterclockwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;돌리고자 하는 각도가 180, 270일 떄는?&lt;/strong&gt;&lt;br /&gt;
+이미 아시겠지만, 위의 과정들을 연속해서 하면 됩니다.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>유정민</name></author><summary type="html">그림 90도 회전에 쓰는 matrix-rotation에 대해서 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/algo/misc/matrix-rotation/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/algo/misc/matrix-rotation/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">BFS:최단 경로의 비밀!</title><link href="http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html" rel="alternate" type="text/html" title="BFS:최단 경로의 비밀!" /><published>2020-04-16T00:00:00+09:00</published><updated>2020-04-16T00:00:00+09:00</updated><id>http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs</id><content type="html" xml:base="http://localhost:4000/graph-theory/basic-algo/2020/04/16/bfs.html">&lt;p&gt;&lt;strong&gt;지도 앱을 이용해 최단 경로를 찾거나 주변에 가까운 음식점은 어떤 것이 있는지&lt;/strong&gt;&lt;br /&gt;
 같은 기능들 한 번씩은 사용해 보셨죠. 어떤 원리가 있는 지 궁금하신 적 있나요?&lt;br /&gt;
 이 안에는 프론트, 백, 데이터프로세싱, GPS등 여러 기술이 복잡하게 있지만&lt;br /&gt;
 그 중 백에서는 &lt;strong&gt;BFS&lt;/strong&gt;을 기반한 알고리즘이 쓰이는 경우가 많습니다.&lt;br /&gt;
@@ -1047,160 +1112,4 @@ space-complexity면에서는 기존의 것보다 비효율적입니다.&lt;br /&
             &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">검색어, 채팅의 자동 완성에 쓰이는 Trie에 대해 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트: 자물쇠와 열쇠</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html" rel="alternate" type="text/html" title="카카오 테스트: 자물쇠와 열쇠" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/Lock.html">&lt;h1 id=&quot;핵심개념&quot;&gt;핵심개념&lt;/h1&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;/misc/basic-algo/2020/04/17/matrix-rotation.html&quot;&gt;Matrix rotation&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&quot;팁&quot;&gt;팁&lt;/h1&gt;
-
-&lt;p&gt;첫 번쨰: &lt;strong&gt;효율적인 Time-complexity를 크게 고민하시지는 않아도 될 거 같습니다.&lt;/strong&gt;&lt;br /&gt;
-원체, N과 M의 최대 범위값이 크지 않아서 여러 번의 Nested-loop하셔도 통과가 가능합니다.&lt;br /&gt;
-저 같은 경우, O( (n+m)2 * (m2 + n2 ) ) 이었는데, 통과가 되었습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;두 번째: &lt;strong&gt;회전과 이동의 개념을 정확하게 이해하셔야 합니다.&lt;/strong&gt;&lt;br /&gt;
-회전들은 서로 배반적으로 작용합니다. i.e 경우의 수에서 말하는 합의 법칙(or)이 성립합니다.&lt;br /&gt;
-저도 수학적인 증명까지는 못했으나, 종이에, 3*3 정도 grid를 그리셔서 회전과 이동을 해보시면 아시게 될겁니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;세 번째: &lt;strong&gt;Virtual Matrix를 이용하라.&lt;/strong&gt;&lt;br /&gt;
-문제에서 제시한 조건을 충족하면서 Lock과 keys의 값을 효율적으로 비교하기 위해 크기가&lt;br /&gt;
-(n + 2m)(n + 2*m)인 큰 Virtual Matrix를 새로 그려서 값을 비교했습니다.&lt;br /&gt;
-Space complexity가 약간 커지지만, 코드가 이해하기 쉬워집니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;마지막: &lt;strong&gt;XOR을 이용해서 홈과 돌기를 서로 비교하시면 더욱 깔끔한 코드가 될거같습니다.&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;code&quot;&gt;Code:&lt;/h1&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Counterclockwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_matrix&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;locks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;locks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lock_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lock_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;270&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;op&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;op&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Counterclockwise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;VirtualMatrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;key_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;
-
-                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                        &lt;span class=&quot;n&quot;&gt;VirtualMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-                &lt;span class=&quot;n&quot;&gt;Unlock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VirtualMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lock_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lock_y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;locks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unlock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-                            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
-                        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VirtualMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lock_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lock_y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;locks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unlock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-                            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
-
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;code-review&quot;&gt;Code-review:&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;논리구조가 간단명료한가?
-    &lt;ul&gt;
-      &lt;li&gt;VirtualMatrix를 사용하니 논리구조 자체는 논리정연했다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;코드를 Readible 하게 적었는가?
-    &lt;ul&gt;
-      &lt;li&gt;x,y,z,k 등의 변수 이름은 친절하지 않게 적었다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;최적화는 하였는가?
-    &lt;ul&gt;
-      &lt;li&gt;전체적인 Complete-search를 해야해서 좋은 time-complexity라고 할 수는 없다.&lt;br /&gt;&lt;/li&gt;
-      &lt;li&gt;논리구조는 명료했지만 space-complexity가 좀 더 비효율적이 되었다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>유정민</name></author><summary type="html">2020-카카오 채용-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">카카오 테스트:가사 검색</title><link href="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html" rel="alternate" type="text/html" title="카카오 테스트:가사 검색" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202020%20blind/2020/04/13/search_lyrics.html">&lt;h1 id=&quot;핵심-개념&quot;&gt;핵심 개념:&lt;/h1&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;/non-linear-ds/advanced-ds/2020/04/14/Trie.html&quot;&gt;Trie&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;prefix and suffix&lt;/li&gt;
-  &lt;li&gt;string 길이&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&quot;팁&quot;&gt;팁:&lt;/h1&gt;
-
-&lt;p&gt;1) 문제의 조건을 보시면, query안에,  ‘?’가 있을 수 있는 경우는:  prefix 또는 suffix 또는 ‘?????’ 이렇게 세 가지 경우가 있습니다.  그래서 트리 하나로 해결하시는 것보다, 이 경우들을 다 고려하시면서 한 개이상의 Trie를 만드시는 게 좋습니다.&lt;/p&gt;
-
-&lt;p&gt;2) 이 문제에서는 substring을 구하는 문제가 아니고 match하는 string을 구하는 것이기 때문에 아예 처음부터, string의 길이를 이용하시는 것도 좋습니다.&lt;/p&gt;
-
-&lt;p&gt;3) 다른 응용으로는, 단순한 Trie가 아니라, Trie 내부에, subtree의 노드 수를 계속 추적할 수 있는 값을 추가하시면 훨씬 효율적입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;More Tip:&lt;/strong&gt;&lt;br /&gt;
-문제에서 중복이 있을 수 있다라는 이야기가 나와서 중복을 없애고 시작하면, 좀 더 효율적이지 않나? 라고
-생각이 들 수도 있습니다. 하지만 사실 이건 크게 의미가 없습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;우리는 이전에 같은 string이 있었는지 체크하기 위해 hash function을 적용 하는 과정에서 string 전체를 적어도 한 번을 다 돌아야 합니다.
-그러므로, O(len(string))으로 Trie에서의 탐색하는 것과 같은 time complexity를 가집니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;code&quot;&gt;Code&lt;/h1&gt;
-&lt;p&gt;풀이는 위의 설명을 참조해서 코드를 직접 보시면서 이해하면 좋겠습니다.&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
-
-
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Trie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# chr|visited
-&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre_v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre_v&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;pre_v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pre_v&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;prefix_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Trie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;suffix_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Trie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;len_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;defaultdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;prefix_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;suffix_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;len_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;queries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#preffix_query
-&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'?'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#suffix_query
-&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;suffix_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IMPOSSIBLE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2020 카카오-채용 100% 친절 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2020-kakao-blind/blind.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">검색어, 채팅의 자동 완성에 쓰이는 Trie에 대해 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/non-linear/Trie/google.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
