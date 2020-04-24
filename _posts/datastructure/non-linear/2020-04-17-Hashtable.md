@@ -60,6 +60,7 @@ excerpt: 전화번호 검색, 아이디 검색 등 에 쓰이는 HashTable에 �
 더 나아가, '재석' 뿐 아니라 다른 학생들도 수학 점수가 궁금해서 찾아오면 어떡할까요?<br/>
 **매 학생이 물을 때마다, 모든 데이터를 체크해야 하고, 이건 굉장히 비효율적입니다.**<br/>
 만약 K명의 학생이 물어본다고 가정하면 시간 소모는 O(N*M *K)가 됩니다.<br/>
+
 **따라서 물어보는 학생이 많으면 많을 수록 소모되는 시간은 기하급수적으로 커집니다.**<br/>
 이 비효율성을 줄이고자, 다음과 같은 HashTable이라는 자료구조가 고안되었습니다.<br/>
 
@@ -100,8 +101,8 @@ Hashing 함수는 다음과 같은 두 단계로 이루어져있습니다.
 데이터를 넣는 과정은 크게 5단계로 이루어 집니다.
 1. '동훈' 학생의 이름이 Key로 들어갑니다.
 2. '동훈' 각각 '동', '훈'에 해당하는 Decimal 값을 LUT에서 찾습니다.
-3. 찾은 Decimal값을 Hash-function에서 두 가지 단계로 처리합니다.
-4. 나온 값 3에 해당하는 slots의 Index 를 찾습니다.
+3. LUT에서 찾은 값을 이용해 Hash-function에서 두 가지 단계로 처리합니다.
+4. 나온 값 3에 해당하는 Index를 가진 slot에 접근합니다.
 5. 해당하는 index의 slot에 '동훈'의 점수인 15를 넣습니다.
 
 아래는 '명수'의 데이터를 넣는 과정입니다.<br/>
@@ -122,8 +123,8 @@ Hashing 함수는 다음과 같은 두 단계로 이루어져있습니다.
 
 데이터를 찾는 과정은 데이터를 넣을 때의 과정과 비슷합니다.
 1. Hash-func을 통해서 '재석'의 Index 값인 4를 찾는다.
-2. slots에서 index가 4인 데이터에 접근한다.
-3. index가 4인 slot에 저장된 데이터인 '100'을 return 한다.
+2. index가 4인 slot에 접근한다.
+3. index가 4인 slot에 저장된 데이터인 '100'을 도출한다.
 
 아래는 Keys에 없는 '홍철' 학생의 데이터를 찾는 과정입니다.<br/>
 
@@ -134,12 +135,12 @@ Hashing 함수는 다음과 같은 두 단계로 이루어져있습니다.
 하지만, index가 1인 slot에는 데이터가 없고 따라서 **Null**을 Return 합니다.<br/>
 
 > 실제론, Birthday-paradox 같은 문제로 Collision이란 것이 생깁니다.<br/>
-> 이를 해결하기 위한 전략으로는 Open-address나 channing 등 몇 가지가 있습니다.<br/>
+> 대처하기 위한 전략으론 Open-address나 separate-channing 등 몇 가지가 있습니다.<br/>
 > [더 자세히 알아보기](https://en.wikipedia.org/wiki/Hash_table)<br/>
 
 # HashTable의 평가:
 일단 data를 Insert할 떄는 brute-force 방법보다 더 걸릴 수 밖에 없습니다.<br/>
-각 데이터는 Hash-func을 거쳐 저장되기 때문에 그 만큼 더 걸리는 것이죠.<br/>
+각 데이터는 Hashing을 거쳐 저장되기 때문에 Hashing 하는 시간만큼 더 걸리는 것이죠.<br/>
 
 **Big-O notation으로 따지면, O(N*M)의 시간이 걸립니다.**<br/>
 (이 때, N = 넣고자 하는 학생 수, M = 각 학생의 이름 길이)<br/>
@@ -151,9 +152,9 @@ Hashing 함수는 다음과 같은 두 단계로 이루어져있습니다.
 **이 때 얻은 Index의 slot은 Dynamic-array의 마법으로 바로 접근할 수 있습니다.**<br/>
 
 **Big-O notation으로 보면, O(K*M)의 시간이 걸립니다.**<br/>
-(이 때, K = Query의 수, M = 각 Query 학생의 이름 길이)
+(이 때, K = Query의 수, M = 각 Query 학생의 이름 길이)<br/>
 이 시간이 걸리는 이유는 각 Query들은 Hash-func 과정을 해야하기 때문에 어쩔 수 없이<br/>
-Hash-func에 걸리는 시간인 O(M)을 소모할 수 밖에 없습니다. 하지만 Search하는 시간은<br/>
+Hashing에 걸리는 시간인 O(M)을 소모할 수 밖에 없습니다. 하지만 Search하는 시간은<br/>
 O(1)으로 Linear하게 바로 원하는 값에 접근할 수 있습니다.<br/>
 따라서, 이전보다 **훨씬 좋은 Query 처리 속도를 가진다고 할 수 있습니다.**<br/>
 
