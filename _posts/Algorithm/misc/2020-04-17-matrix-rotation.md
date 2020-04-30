@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Matrix-roatation:그림 90도 회전의 비밀!
+title: Matrix-roatation:PPT에서의 그림 90도 회전의 비밀!
 categories:
   - misc
   - basic-algo

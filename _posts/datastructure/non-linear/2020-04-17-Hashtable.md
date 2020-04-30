@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "HashTable: 전화번호 찾기의 비밀!"
+title: "HashTable:휴대폰의 연락처 찾기의 비밀!"
 # permalink: /datastructure/non_linear_ds/trie
 categories:
   - non-linear-ds
@@ -68,7 +68,7 @@ excerpt: 전화번호 검색, 아이디 검색 등 에 쓰이는 HashTable에 �
 이 문제를 해결하는 아이디어는 **Hashing와 Dynamic-array의 마법을 이용하는 것**입니다.<br/>
 사실, 이 두 가지의 비밀 뒤에는 수학, 통계, LUT 등 여러가지 고려할 것이 많습니다.<br/>
 하지만, 이 글에서는 **HashTable의 전체적인 구조에 관해서만 간단히 알아보겠습니다.** <br/>
->-참조 Dynamic-array의 마법을 알고 싶으면 [Dynamic-array]()<br/>
+>-참조 Dynamic-array의 마법을 알고 싶으면 [Dynamic-array]({% link _posts/datastructure/linear/2020-04-24-Dynamic-array.md %})<br/>
 >-참조 Hashing의 마법을 알고 싶으면 [Hashing]()<br/>
 
 **전체적인 구조:**<br/>
