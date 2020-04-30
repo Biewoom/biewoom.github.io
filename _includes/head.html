@@ -1,5 +1,4 @@
 <head>
-  {% include google-analytics.html %}
   <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
   <script type="text/javascript">
     if(!wcs_add) var wcs_add = {};
@@ -21,6 +20,7 @@
     <link rel="canonical" href="{{ page.url | replace:'index.html', '' | absolute_url }}">
   {% endif %}
 
+  {% include google-analytics.html %}
   <script>
     /* Cut the mustard */
     if ( 'querySelector' in document && 'addEventListener' in window ) {
