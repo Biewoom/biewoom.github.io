@@ -1,120 +1,84 @@
 ---
 layout: post
-title: "Array: RAM과 연속성의 마법!"
+title: "Dynamic Array: Array구조의 기본"
 categories:
   - linear-ds
-  - basic-ds
 image:
-  path: /assets/images/ds/linear/dynamic-array/back.png
-  thumbnail: /assets/images/ds/linear/dynamic-array/back.png
 comments: true
-excerpt: 가장 기본이 되는 Array와 Dynamic-array 에 대해서 알아보자.
+excerpt: 가장 기본이 되는 Array 구조인 Dynamic-array 에 대해서 알아보자.
 ---
-' **제목 그대로' RAM의 마법이자, 많은 자료 구조들의 어머니인 Array** 입니다.<br/>
-이 글에서는 RAM과 Array 그리고 Dynamic-array에 대해서 설명 하겠습니다.<br/>
-
-# RAM이란?
-![image](/assets/images/ds/linear/dynamic-array/ram.png)
-
-여기서 계속 말하는 RAM은 우리가 평소에 말하는 하드웨어 "RAM" 그거 맞습니다.<br/>
-**이 RAM에 대해서 알아야, Array의 가치를 제대로 이해 할 수 있습니다.**<br/>
-
-![image](/assets/images/ds/linear/dynamic-array/cpu-ram.png)
-
-※CacheMemory(SRAM), MainMemory(DRAM) 등 더 깊은 것은 여기서 다루지 않겠습니다.
-
-RAM은 위 그림 처럼 CPU 옆에 붙어서 우리의 명령코드를 수행합니다.<br/>
-CPU가 일련의 명령들을 수행하는 동안 값과 자료들을 읽고 기억하는 공간입니다.<br/>
-ROM과는 다르게, 전원이 꺼지거나 하면 값이 사라지는 volatile 메모리입니다.<br/>
-이까지의 내용은 많은 분들이 이미 아시는 내용 일 것이라고 생각합니다.<br/>
-
-하지만 우리가 이 글에서 주목 해야할 것은 바로 아래의 내용입니다.<br/>
-
-RAM은 **Random Access 방식**으로 데이터를 읽거나 기억하는 메모리입니다.<br/>
-그럼 Random Access 방식은 멀까요?<br/>
-결론부터 이야기하면, **램에 저장된 어느 데이터든 접근 시간이 거의 동일하다.**<br/>
-더 이야기하자면, **데이터의 주소만 알면 RAM은 그 주소로 순간 이동 할 수 있다.** 입니다.<br/>
-
-랩 안에는 공간이 허용하는 한 집을 짓고, 집을 지을 때마다 주소 값이 생깁니다.<br/>
-**우리가 어떤 주소를 알고 그것을 RAM에게 준다면 그 주소로 순간 이동을 합니다**.<br/>
-그림으로 표현하면 램(RAM)은 아래와 같다고 생각하면 됩니다.
-
-![image](/assets/images/ds/linear/dynamic-array/Ram-address.png)
-
-이 Array는 배열의 연속성을 통해 RAM을 이용한 기본 자료 구조입니다.<br/>
->다른 방법으로는 Pointer를 통해 RAM을 이용한 [Linked-list]({% link _posts/datastructure/linear/2020-04-25-linked-list.md %})가 있습니다.<br/>
-
-# Array와 연속성:
-Array란 **데이터가 연속되어 저장된 배열**입니다.<br/>
-메모리 기준에서 말하면, Array란 **데이터들이 연속되는 메모리 주소를 가지는 배열**입니다.<br/>
-
-여기서 계속 강조되는 것은 **배열의 연속성**이라는 것입니다.<br/>
-이것이 왜 중요한지는 아파트의 그림과 예를 들어 설명을 드리겠습니다.<br/>
-
-![image](/assets/images/ds/linear/dynamic-array/array.png)
-
-일단 **Array란 눕힌 아파트와 같다고 생각할 수 있습니다.**<br/>
-Array 안에는 아파트의 호실처럼 공간들이 순차적으로 줄지어 있습니다.<br/>
-
-각 호실은 사실 제각각 고유의 주소(address)를 가지고 있습니다.<br/>
-**각 호실은 연속되어 있기에 주소도 서로 연속되는 값을 가지게 됩니다.**<br/>
-**아파트이기 때문에 아파트의 주소도 있고 주소는 맨 앞의 호실의 주소와 같습니다.**<br/>
-
-![image](/assets/images/ds/linear/dynamic-array/array-ram1.png)
-
-자, 여기서 우리는 **RAM을 광속의 쿠팡맨이다**라고 상상해 보겠습니다.<br/>
-쿠팡맨은 **마을아파트가 굉장히 많기 때문에 방 하나 하나 주소를 다 기억하지는 못합니다.**<br/>
-대신 **마을에 있는 아파트의 주소는 본사에 전화를 하게 되면 다 알 수가 있죠.**<br/>
-
-![image](/assets/images/ds/linear/dynamic-array/array-ram2.png)
-
-여기서 우리 쿠팡맨은 **FF101아파트의 4호실로 가라!**라는 미션을 받게됩니다.<br/>
-쿠팡맨은 광속이기 때문에 **방의 주소만 안다면** 순식간에 갈 수 있습니다.<br/>
-하지만 안타깝게도 **쿠팡맨은 방 하나 하나의 고유의 주소는 모른다는 것이죠.**<br/>
-**쿠팡맨은 과연 어떻게 방 고유의 주소를 얻을 수 있을까요?**<br/>
-
-![image](/assets/images/ds/linear/dynamic-array/array-ram3.png)
-
-해결 방법은 바로 **본사에 전화해서 아파트의 주소를 알아내고**<br/>
-**아파트의 호실은 연속적이다** 라는 것을 이용하여 주소 값을 얻는 것입니다.<br/>
-위 문제의 경우에는 **4호실은 0 호실에서 4만큼 떨어져 있으니, 아파트 주소 + 4 = 4호 주소**<br/>
-라는 사실을 알 수 있고, 쿠팡맨은 성공적으로 4호실의 주소로 순간이동 할 수 있습니다.<br/>
-
-위 개념들이 배열의 연속성을 통해 RAM을 이용하는 데이터 구조 array 대한 설명입니다.<br/>
-아래부터는 이 개념이 실제 컴퓨터 안에서는 어떻게 이루어 지는 지 설명 하겠습니다.<br/>
-
-# 실제 Array(Dynamic-Array):
-Array는 연속적인 데이터의 배열이고 Array는 아래의 기능들을 수행할 수 있어야 합니다.<br/>
-※ 대부분 Static 형태보단 Dynamic로 쓰기 때문에 Dynamic-array로 설명하겠습니다.<br/>
+# Dynamic-Array의 기능
+Dynamic Array는 아래의 기능들을 수행할 수 있어야 합니다.<br/>
 1. Initialize
 2. Insert
 3. Read
 4. Update
 5. Delete
+6. Resize
 
-**Initialize:**<br/>
+### Initialize
+DynamicArray는 내부 attribute로 할당받은 Heap 주소와 capcity, size를 가집니다.<br/>
+가장 처음에는 자료형*Capacity 만큼의 heap을 할당받아야 합니다.<br/>
+이 때, 내부적으로는 요청하는 크기만큼 Heap의 **연속적인 배열**을 할당을 해줍니다.<br/>
 
-**Insert:**<br/>
+### Insert
+Dynamic array에서의 Insert는 두 가지 경우로 나눌 수 있습니다.<br/>
+<1> Array의 끝 부분에 Inert하는 경우 <2> Array의 중간부분에 Insert 하는 경우<br/>
 
-**Read:**<br/>
+1번의 경우에는 size를 1만큼 늘리고, 끝 부분 값에 새로 넣는 값으로 Update를 하면 됩니다.<br/>
+따라서, 시간효율성은 O(1)인 Constant하게 이루어 질 수 있습니다.<br/>
 
-**Update:**<br/>
+하지만, 2번 경우처럼 Array 중간에 Insert하는 경우 **배열 주소값의 연속성을 유지**하기 위해서는 <br/>
+새로운 Array를 만들어야 합니다.<br/> 이는 heap을 새로 할당받고 Copy하는 과정을 거쳐야합니다.<br/>
+따라서, O(n)의 시간 효율성을 요구받게 됩니다.<br/>
 
-**Delete:**<br/>
+### Read
+**Dynamic-array의 강점이 두드러지는 Action입니다.**<br/>
+배열의 연속성을 이용하여 우리가 원하는 Index의 값으로 **Random Access**할 수 있습니다. <br/>
+이 때 시간효율성은 O(1)로 Constant하게 접근할 수 있습니다.<br/>
+※많은 언어에서는 "[]" 기호로 접근할 수 있게 Indexing을 구현해놓았습니다.<br/>
 
-# Array와 관련된 자료구조들:
-Array와 관련된 자료구조들은 너무도 많습니다.<br/>
-사실 모든 구조가 계속 내려가면 Linked-list 또는 Array로 되어 있기 떄문입니다.<br/>
-그 중에서 대표적인 것을 뽑자면 **HashTable, Queue, String, binaryHeap**정도가 있습니다.<br/>
+### Update
+**Dynamic-array의 강점이 두드러지는 Action입니다.**<br/>
+Update은 바로 위에서 언급한 Read의 action 후에 그 값을 수정하는 Action입니다.<br/>
+시간 효율성은 O(1)로 수행할 수 있고, 구현도 Read 부분과 크게 다른 게 없습니다.<br/>
 
-중요한 것은 **위 자료구조들은 연속성을 이용한 Index 접근이 필요한 구조들**이라는 것입니다.<br/>
-즉, **Array 약점인 비효율적인 Insert, delete 등 보다 Index 접근이 중요한 구조들**입니다.<br/>
+### Delete
+Dyanamic array에서 delete를 하는 경우는 크게 두 가지로 나눌 수 있습니다.<br/>
+<1> Array의 끝 부분을 Delete하는 경우 <2> Array의 중간 부분을 Delete 하는 경우<br/>
 
-위를 이해하면 어떤 구조를 구현 할 때 Linked-list로 구현해야 하나? Array로 구현해야 하나?<br/>
-고민들은 이전에 구현했던 기억으로 구현하는 것이 아니라 자연스럽게 구현할 수 있게 됩니다.<br/>
+1번 경우에는 size를 1만큼 줄이고 마지막을 None 등의 값들로 다시 처리하면 됩니다.<br/>
+따라서, 시간효율성을 O(1)로 구현이 가능합니다.<br/>
 
-가령 HashTable은 **Hashing을 통해 얻은 Index를 사용해 빠르게 data에 접근해야 한다**라는<br/>
-철학을 가지고 있기 때문에 Dynamic-array이 더 이득이 많다. 라는 통찰을 얻을 수 있습니다.<br/>
+하지만, 2번처럼 Array의 중간을 Delete하는 경우 **배열 주소값의 연속성을 유지하기**위해서<br/>
+우리는 새로운 Array를 만들고 heap을 할당받고 copy를 하는 과정을 거쳐야합니다.<br/>
+따라서, O(n)의 시간 효율성을 요구받게 됩니다.<br/>
 
-# 구현 by Python:
- [Github 코드 보러가기](https://github.com/Biewoom/ds/blob/master/LinearDs/DynamicArray.py)
+### Resize
+Static array가 아닌 Dynamic array만의 특징입니다.<br/>
+사실 내부 구조는 둘 다 같습니다. 다만, 후자는 Resize를 한다가 차이점입니다.<br/>
+이렇게 Resize를 하는 경우는 아래와 같은 두 가지 경우 입니다.<br/>
+
+**1. Insert로 인해, 현재의 Capacity보다 Array의 size가 커지려고 할 때**<br/>
+기존의 Capacity보다 size가 커지면, 더 이상 input을 넣을 공간이 부족하게 됩니다.<br/>
+이 때, 내부적으로 통상적으로 Capacity의 두 배정도의 새로운 Heap 공간을 요구합니다.<br/>
+그런 다음, 새롭게 할당받은 heap 공간에 현재의 값들을 모두 Copy합니다.<br/>
+기존에 있던 heap을 해제, 반환을 합니다.<br/>
+
+**2. Delete로 인해, 현재의 Capcity보다 Array이 현재 Size가 턱없이 작을 때**<br/>
+현재 쓰고 있는 10밖에 안되는데, 전체 메모리는 100을 할당받고 있으면 비효울적입니다.<br/>
+따라서, Delete로 인해 size가 많이 작아지면 통상적으로 반을 다시 반환을 해야 합니다.<br/>
+
+두 가지 모두 O(n)의 시간이 걸리지만, 실제로 Resize는 매번 요구받지는 않습니다.<br/>
+따라서 전체 시간효율성에는 큰 변화가 없습니다.<br/>
+
+# 실제 언어와 구현된 Library
+
+※ Dynamic Array를 구현한 라이브러리 입니다.<br/>
+
+**Python:** 기본 구조형 List[]가 내부적으로 Dynamic Array로 되어 있습니다.<br/>
+**C++:** STL의 Vector가 내부적으로 Dynamic Array로 되어 있습니다.<br/>
+**Java:** java.util.ArrayList가 내부적으로 Dynamic Array로 되어 있습니다.<br/>
+
+# 직접 구현 코드
+Python: [Github 코드 보러가기](https://github.com/Biewoom/ds/blob/master/LinearDs/DynamicArray.py)<br/>

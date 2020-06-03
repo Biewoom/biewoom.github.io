@@ -10,4 +10,4 @@ entries_layout: grid
 개념보다는 PS의 실전 또는 기출을 많이 푸는 것이 코드테스트 통과를 위해서는 좋습니다<br>
 
 ## 상세카테고리
-#[kakao-blind-2020](kakao-2020-blind/)
+#[kakao-blind-2020](kakao-2020-blind/) #[kakao-festival-2017](kakao-2017-festival/)
