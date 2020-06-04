@@ -5,7 +5,7 @@ categories:
   - coding test
   - kakao 2017
 image:
-  path: assets/images/PS/2017-kakao-festival/back.png
+  path: assets/images/PS/2017-kakao-festival/newback.png
   thumbnail: /assets/images/PS/2017-kakao-festival/heavenOfpedestrian.png
 comments: true
 excerpt: 2017-카카오 페스티벌-100% 풀이

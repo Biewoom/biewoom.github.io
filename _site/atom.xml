@@ -1,10 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-06-04T16:09:02+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">카카오 페스티벌: 사천성</title><link href="http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1.html" rel="alternate" type="text/html" title="카카오 페스티벌: 사천성" /><published>2020-06-04T00:00:00+09:00</published><updated>2020-06-04T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1.html">&lt;h1 id=&quot;핵심개념&quot;&gt;핵심개념&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-06-04T17:30:31+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">카카오 페스티벌: 사천성</title><link href="http://localhost:4000/coding%20test/kakao%202017/2020/06/04/fourheaven.html" rel="alternate" type="text/html" title="카카오 페스티벌: 사천성" /><published>2020-06-04T00:00:00+09:00</published><updated>2020-06-04T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202017/2020/06/04/fourheaven</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202017/2020/06/04/fourheaven.html">&lt;h1 id=&quot;핵심개념&quot;&gt;핵심개념&lt;/h1&gt;
+&lt;p&gt;&amp;lt;1&amp;gt; Find 함수 구현&lt;br /&gt;
+&amp;lt;2&amp;gt; BackTracking&lt;br /&gt;
+&amp;lt;3&amp;gt; String -&amp;gt; char Array&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;팁&quot;&gt;팁&lt;/h1&gt;
+&lt;p&gt;String은 Type은 replace가 있긴 하지만 본래가 immutable한 자료구조입니다.&lt;br /&gt;
+Logic 수행 과정에서 잦은 변화가 있기 때문에 미리 char Array로 바꾸는 게 좋습니다.&lt;br /&gt;
+HashSet으로 우리가 계산해야 할 전체 tile 수를 먼저 구해놓는 것도 좋은 거 같습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;전체적으로 BackTracking을 이용해 문제를 풀 수 있습니다. 그 과정은 아래와 같습니다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;제거할 수 있는 타일이 있는 지 검사한다.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;제거할 수 있는 게 있다면 타일을 제거한다.&lt;/li&gt;
+  &lt;li&gt;제거했다면, 변환 후의 board로 다시 BackTracking을 수행한다.&lt;/li&gt;
+  &lt;li&gt;제거하지 못했다면, 수행을 멈춘다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;우리는 매번 제거할 수 있는 Tile이 있는 지를 검사를 해야합니다.&lt;br /&gt;
+여기서 주목해야할 점은 모든 제거하는 경우는 두 가지로 압축을 할 수 있다는 것입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;자신이 Tile 중 하나이고 나랑 같은 Tile을 수직 또는 수평에서 찾는다.&lt;/li&gt;
+  &lt;li&gt;자신은 두 가지 Tile들을 이어주는 Bridge이고 수평에서 하나, 수직에서 하나 찾는다.&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;제거하는 Logic의 자세한 내용은 밑에서 설명하겠습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h1 id=&quot;그림-설명&quot;&gt;그림 설명&lt;/h1&gt;
+&lt;p&gt;Matrix의 모든 원소를 돌아가며 제거하는 타일이 있는 지를 체크해야합니다.&lt;br /&gt;
+이 때 Matrix의 원소는 3가지 경우가 있습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;자신이 타일인 경우(Capital alphabet)&lt;/li&gt;
+  &lt;li&gt;자신이 빈 공간인 경우&lt;/li&gt;
+  &lt;li&gt;자신이 Wall 인 경우&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;1번-경우&quot;&gt;1번 경우&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/PS/2017-kakao-festival/find1.png&quot; alt=&quot;image&quot; height=&quot;50%&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;자신은 Bridge 역할은 할 수 없고 직접 같은 타일이 있는지 검사해야합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2번-경우&quot;&gt;2번 경우&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/PS/2017-kakao-festival/find2.png&quot; alt=&quot;image&quot; height=&quot;50%&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/PS/2017-kakao-festival/find3.png&quot; alt=&quot;image&quot; height=&quot;50%&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;자신은 타일의 역할을 할 수 없고 Bridge의 역할만 가능합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3번-경우&quot;&gt;3번 경우&lt;/h3&gt;
+&lt;p&gt;그냥 continue로 넘어가면 됩니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;시간효율성&quot;&gt;시간효율성&lt;/h3&gt;
+&lt;p&gt;Initialize 과정: O(m * n)&lt;br /&gt;
+BackTracking 과정: O(m * n * k) 단, k = 전체 타일의 종류 수&lt;br /&gt;
+Total: O(m * n * k)&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;code&quot;&gt;Code:&lt;/h1&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
@@ -166,7 +217,7 @@
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tempSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2017-카카오 페스티벌-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2017-kakao-festival/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2017-kakao-festival/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Array structure: RAM과 연속성의 마법!</title><link href="http://localhost:4000/basic-ds/2020/06/03/array-structure.html" rel="alternate" type="text/html" title="Array structure: RAM과 연속성의 마법!" /><published>2020-06-03T00:00:00+09:00</published><updated>2020-06-03T00:00:00+09:00</updated><id>http://localhost:4000/basic-ds/2020/06/03/array-structure</id><content type="html" xml:base="http://localhost:4000/basic-ds/2020/06/03/array-structure.html">&lt;p&gt;’ &lt;strong&gt;제목 그대로’ RAM의 마법이자, 많은 자료 구조들의 어머니인 Array 구조&lt;/strong&gt; 입니다.&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2017-카카오 페스티벌-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2017-kakao-festival/newback.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2017-kakao-festival/newback.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Array structure: RAM과 연속성의 마법!</title><link href="http://localhost:4000/basic-ds/2020/06/03/array-structure.html" rel="alternate" type="text/html" title="Array structure: RAM과 연속성의 마법!" /><published>2020-06-03T00:00:00+09:00</published><updated>2020-06-03T00:00:00+09:00</updated><id>http://localhost:4000/basic-ds/2020/06/03/array-structure</id><content type="html" xml:base="http://localhost:4000/basic-ds/2020/06/03/array-structure.html">&lt;p&gt;’ &lt;strong&gt;제목 그대로’ RAM의 마법이자, 많은 자료 구조들의 어머니인 Array 구조&lt;/strong&gt; 입니다.&lt;br /&gt;
 이 글에서는 RAM과 Array 그리고 Dynamic-array에 대해서 설명 하겠습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;ram이란&quot;&gt;RAM이란?&lt;/h1&gt;
@@ -336,7 +387,7 @@ Array 안에는 아파트의 호실처럼 공간들이 순차적으로 줄지어
     &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cityMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2017-카카오 페스티벌-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2017-kakao-festival/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2017-kakao-festival/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Nodes structure: RAM과 포인터의 마법!</title><link href="http://localhost:4000/basic-ds/2020/06/03/nodes-structure.html" rel="alternate" type="text/html" title="Nodes structure: RAM과 포인터의 마법!" /><published>2020-06-03T00:00:00+09:00</published><updated>2020-06-03T00:00:00+09:00</updated><id>http://localhost:4000/basic-ds/2020/06/03/nodes-structure</id><content type="html" xml:base="http://localhost:4000/basic-ds/2020/06/03/nodes-structure.html">&lt;p&gt;’ &lt;strong&gt;제목 그대로’ RAM의 마법이자, 자료 구조들의 아버지인 Nodes 구조&lt;/strong&gt; 입니다.&lt;br /&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>유정민</name></author><summary type="html">2017-카카오 페스티벌-100% 풀이</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/PS/2017-kakao-festival/newback.png" /><media:content medium="image" url="http://localhost:4000/assets/images/PS/2017-kakao-festival/newback.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Nodes structure: RAM과 포인터의 마법!</title><link href="http://localhost:4000/basic-ds/2020/06/03/nodes-structure.html" rel="alternate" type="text/html" title="Nodes structure: RAM과 포인터의 마법!" /><published>2020-06-03T00:00:00+09:00</published><updated>2020-06-03T00:00:00+09:00</updated><id>http://localhost:4000/basic-ds/2020/06/03/nodes-structure</id><content type="html" xml:base="http://localhost:4000/basic-ds/2020/06/03/nodes-structure.html">&lt;p&gt;’ &lt;strong&gt;제목 그대로’ RAM의 마법이자, 자료 구조들의 아버지인 Nodes 구조&lt;/strong&gt; 입니다.&lt;br /&gt;
 이 글에서는 RAM과 Node structure 그리고 Linked-list에 대해서 설명 하겠습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;ram이란&quot;&gt;RAM이란?&lt;/h1&gt;

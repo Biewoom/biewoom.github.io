@@ -5,23 +5,66 @@ categories:
   - coding test
   - kakao 2017
 image:
-  path: assets/images/PS/2017-kakao-festival/back.png
-  thumbnail: /assets/images/PS/2017-kakao-festival/heavenOfpedestrian.png
+  path: assets/images/PS/2017-kakao-festival/newback.png
+  thumbnail: /assets/images/PS/2017-kakao-festival/fourheaven.png
 comments: true
 excerpt: 2017-카카오 페스티벌-100% 풀이
 actions:
   - label: "문제 풀러가기"
     icon: arrow-right
-    url: https://programmers.co.kr/learn/courses/30/lessons/1832
+    url: https://programmers.co.kr/learn/courses/30/lessons/1836
 ---
 
 # 핵심개념
+<1> Find 함수 구현<br/>
+<2> BackTracking<br/>
+<3> String -> char Array<br/>
 
 # 팁
+String은 Type은 replace가 있긴 하지만 본래가 immutable한 자료구조입니다.<br/>
+Logic 수행 과정에서 잦은 변화가 있기 때문에 미리 char Array로 바꾸는 게 좋습니다.<br/>
+HashSet으로 우리가 계산해야 할 전체 tile 수를 먼저 구해놓는 것도 좋은 거 같습니다.<br/>
+
+전체적으로 BackTracking을 이용해 문제를 풀 수 있습니다. 그 과정은 아래와 같습니다.
+1. **제거할 수 있는 타일이 있는 지 검사한다.**
+2. 제거할 수 있는 게 있다면 타일을 제거한다.
+3. 제거했다면, 변환 후의 board로 다시 BackTracking을 수행한다.
+4. 제거하지 못했다면, 수행을 멈춘다.
+
+우리는 매번 제거할 수 있는 Tile이 있는 지를 검사를 해야합니다.<br/>
+여기서 주목해야할 점은 모든 제거하는 경우는 두 가지로 압축을 할 수 있다는 것입니다.<br/>
+
+1. 자신이 Tile 중 하나이고 나랑 같은 Tile을 수직 또는 수평에서 찾는다.
+2. 자신은 두 가지 Tile들을 이어주는 Bridge이고 수평에서 하나, 수직에서 하나 찾는다.<br>
+
+> 제거하는 Logic의 자세한 내용은 밑에서 설명하겠습니다.
 
 # 그림 설명
+Matrix의 모든 원소를 돌아가며 제거하는 타일이 있는 지를 체크해야합니다.<br/>
+이 때 Matrix의 원소는 3가지 경우가 있습니다.<br/>
+1. 자신이 타일인 경우(Capital alphabet)
+2. 자신이 빈 공간인 경우
+3. 자신이 Wall 인 경우
+
+### 1번 경우
+![image](/assets/images/PS/2017-kakao-festival/find1.png){: height="50%" width="80%"}
+
+자신은 Bridge 역할은 할 수 없고 직접 같은 타일이 있는지 검사해야합니다.<br/>
+
+### 2번 경우
+![image](/assets/images/PS/2017-kakao-festival/find2.png){: height="50%" width="80%"}
+
+![image](/assets/images/PS/2017-kakao-festival/find3.png){: height="50%" width="80%"}
+
+자신은 타일의 역할을 할 수 없고 Bridge의 역할만 가능합니다.<br/>
+
+### 3번 경우
+그냥 continue로 넘어가면 됩니다.<br/>
 
 ### 시간효율성
+Initialize 과정: O(m * n)<br/>
+BackTracking 과정: O(m * n * k) 단, k = 전체 타일의 종류 수<br/>
+Total: O(m * n * k)<br/>
 
 # Code:
 ```java
