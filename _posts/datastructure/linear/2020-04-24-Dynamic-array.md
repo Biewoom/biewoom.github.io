@@ -2,7 +2,9 @@
 layout: post
 title: "Dynamic Array: Array구조의 기본"
 categories:
-  - linear-ds
+  - linear ds
+  - array ds
+  - basic ds
 image:
 comments: true
 excerpt: 가장 기본이 되는 Array 구조인 Dynamic-array 에 대해서 알아보자.

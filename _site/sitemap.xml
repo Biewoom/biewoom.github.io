@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/coding%20test/kakao%202019%20blind/2020/06/04/muzi.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/coding%20test/kakao%202017/2020/06/04/fourheaven.html</loc>
     </url>
     
@@ -14,19 +18,19 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/basic-ds/2020/06/03/nodes-structure.html</loc>
+        <loc>http://localhost:4000/fundamental%20ds/2020/06/03/nodes-structure.html</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/basic-ds/2020/06/03/array-structure.html</loc>
+        <loc>http://localhost:4000/fundamental%20ds/2020/06/03/array-structure.html</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/linear-ds/2020/04/25/linked-list.html</loc>
+        <loc>http://localhost:4000/linear%20ds/nodes%20ds/2020/04/25/linked-list.html</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/linear-ds/2020/04/24/Dynamic-array.html</loc>
+        <loc>http://localhost:4000/linear%20ds/array%20ds/basic%20ds/2020/04/24/Dynamic-array.html</loc>
     </url>
     
     <url>
@@ -42,7 +46,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/non-linear-ds/basic-ds/2020/04/17/Hashtable.html</loc>
+        <loc>http://localhost:4000/array%20ds/hash%20ds/basic%20ds/2020/04/17/Hashtable.html</loc>
     </url>
     
     <url>
@@ -58,7 +62,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/non-linear-ds/advanced-ds/2020/04/14/Trie.html</loc>
+        <loc>http://localhost:4000/non%20linear%20ds/advanced%20ds/nodes%20ds/2020/04/14/Trie.html</loc>
     </url>
     
     <url>
@@ -114,7 +118,23 @@
     
     
     <url>
+        <loc>http://localhost:4000/advanced-ds/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/categories/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/array-ds/</loc>
     </url>
     
     
@@ -130,7 +150,23 @@
     
     
     <url>
+        <loc>http://localhost:4000/basic-ds/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/coding-test/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/fundamental-ds/</loc>
     </url>
     
     
@@ -146,7 +182,23 @@
     
     
     <url>
+        <loc>http://localhost:4000/hash-ds/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/kakao-2019-blind/</loc>
     </url>
     
     
@@ -178,7 +230,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/linear_ds/</loc>
+        <loc>http://localhost:4000/linear-ds/</loc>
     </url>
     
     
@@ -186,6 +238,22 @@
     
     
     
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/nodes-ds/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/non-linear-ds/</loc>
+    </url>
     
     
     

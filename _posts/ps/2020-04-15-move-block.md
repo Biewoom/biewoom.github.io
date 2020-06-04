@@ -14,7 +14,7 @@ actions:
     icon: arrow-right
     url: https://programmers.co.kr/learn/courses/30/lessons/60063
 ---
-출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges<br/>
+> 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges<br/>
 
 **PS에서는 나오기 힘든 코딩을 요구합니다.**<br/>
 카카오 Tech 측에서도, '상당한 난이도의 코딩을 요구한다.' 라고 언급할 정도로<br/>

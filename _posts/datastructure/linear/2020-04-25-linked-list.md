@@ -2,7 +2,8 @@
 layout: post
 title: "Linked List: Nodes 구조의 기본"
 categories:
-  - linear-ds
+  - linear ds
+  - nodes ds
 image:
   path: /assets/images/ds/basic/linked-back.png
   thumbnail: /assets/images/ds/basic/linked-back.png
