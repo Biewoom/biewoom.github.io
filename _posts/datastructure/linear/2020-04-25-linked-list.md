@@ -4,8 +4,8 @@ title: "Linked List: Nodes 구조의 기본"
 categories:
   - linear-ds
 image:
-  path: /assets/images/ds/linear/linked-list/back.png
-  thumbnail: /assets/images/ds/linear/linked-list/back.png
+  path: /assets/images/ds/basic/linked-back.png
+  thumbnail: /assets/images/ds/basic/linked-back.png
 comments: true
 excerpt: 가장 기본이 되는 Nodes 구조인 Linked-list에 대해서 알아보자.
 ---

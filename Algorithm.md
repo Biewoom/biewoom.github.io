@@ -7,9 +7,9 @@ comments: true
 
 ## 카테고리
 **주제별로:**<br/>
-#[**graph-theory**](/algorithm/graph-theory/)  #[**Greedy**](/greedy/) #[**miscellaneous**](/algorithm/misc/)<br/>
+#[**graph-theory**](/graph-theory/)  #[**Greedy**](/greedy/) #[**miscellaneous**](/misc/)<br/>
 **난이도별:**<br/>
-#[**basic-algo**](/algorithm/basic-algo/)
+#[**basic-algo**](/basic-algo/)
 
 # 알고리즘이란:
 

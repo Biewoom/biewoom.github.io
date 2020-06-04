@@ -6,7 +6,7 @@ comments: true
 actions:
   - label: "Coding Test 문제"
     icon: arrow-right
-    url: "/ps/coding_test/"
+    url: "/coding-test/"
   - label: "Hackerrank 추천 문제"
     icon: arrow-right
 ---

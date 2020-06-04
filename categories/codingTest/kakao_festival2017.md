@@ -1,7 +1,7 @@
 ---
 title: 카카오 2017 페스티벌
 layout: category
-permalink: /ps/coding_test/kakao-2017-festival/
+permalink: /kakao-2017/
 taxonomy: kakao 2017
 entries_layout: grid
 ---

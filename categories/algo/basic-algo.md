@@ -1,7 +1,7 @@
 ---
 title: Basic 알고리즘
 layout: category
-permalink: /algorithm/basic-algo/
+permalink: /basic-algo/
 taxonomy: basic-algo
 entries_layout: grid
 ---

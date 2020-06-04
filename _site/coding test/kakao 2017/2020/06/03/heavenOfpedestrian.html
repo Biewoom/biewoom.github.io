@@ -43,7 +43,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-03T00:00:00+09:00" />
 <script type="application/ld+json">
-{"headline":"카카오 페스티벌: 보행자 천국","dateModified":"2020-06-03T00:00:00+09:00","datePublished":"2020-06-03T00:00:00+09:00","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logo/bw_logo.svg"},"name":"유정민"},"image":{"thumbnail":"/assets/images/PS/2017-kakao-festival/heavenOfpedestrian.png","url":"http://localhost:4000/assets/images/PS/2017-kakao-festival/back.png","@type":"imageObject"},"url":"http://localhost:4000/coding%20test/kakao%202017/2020/06/03/heavenOfpedestrian.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/coding%20test/kakao%202017/2020/06/03/heavenOfpedestrian.html"},"author":{"@type":"Person","name":"유정민"},"description":"2017-카카오 페스티벌-100% 풀이","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","image":{"thumbnail":"/assets/images/PS/2017-kakao-festival/heavenOfpedestrian.png","url":"http://localhost:4000/assets/images/PS/2017-kakao-festival/back.png","@type":"imageObject"},"url":"http://localhost:4000/coding%20test/kakao%202017/2020/06/03/heavenOfpedestrian.html","headline":"카카오 페스티벌: 보행자 천국","dateModified":"2020-06-03T00:00:00+09:00","datePublished":"2020-06-03T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/coding%20test/kakao%202017/2020/06/03/heavenOfpedestrian.html"},"author":{"@type":"Person","name":"유정민"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/logo/bw_logo.svg"},"name":"유정민"},"description":"2017-카카오 페스티벌-100% 풀이","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -271,8 +271,37 @@
 2.DP(dynamic programming)<br /></p>
 
 <h1 id="팁">팁</h1>
+<p>먼저, 답의 정확성에서 문제가 발생하시면 Modular arithmetic에서 실수가 없었는지 체크바랍니다.<br />
+여기서 필요한 Modular arithmetic은 A%m = (B%m + C%m)%m 단, m = 20170805 입니다.<br /></p>
+
+<p>두 번째로, DP의 아이디어가 중요합니다.<br />
+이 문제는 2 * (m+1) * (n+1) 크기의 DP가 문제 풀기에 용이합니다.<br />
+각각 +1을 하는 이유는 i == m-1 이나 j == n-1의 경우를 계산할 때 편하게 하기 위함입니다.<br /></p>
+
+<p>DP에는 (a, b)의 형태로 a: 이전에서 가로 방향으로 온 경우 b: 이전에서 세로 방향으로 온 경우<br />
+로 나누시고 CityMap을 값을 체크하시면서 DP 값들을 처리하시면 됩니다.<br /></p>
 
 <h1 id="그림-설명">그림 설명</h1>
+<p>각 DP의 값에는 이전에서 가로방향으로 들어온 경우와 세로 방향 들어온 경우로 나눕니다.<br /></p>
+
+<h3 id="citymap이-0인-경우">CityMap이 0인 경우</h3>
+<p><img src="/assets/images/PS/2017-kakao-festival/hop1.png" alt="image" /></p>
+<ol>
+  <li>어떤 방향이든 상관없이 dp[1][i][j+1]으로 저장</li>
+  <li>어떤 방향이든 상관없이 dp[0][i+1][j]로 저장</li>
+</ol>
+
+<h3 id="citymap이-2인-경우">CityMap이 2인 경우</h3>
+<p><img src="/assets/images/PS/2017-kakao-festival/hop2.png" alt="image" />
+※그림에 DP값을 1로 잘못 적었습니다. 1-&gt;2로 생각하시고 봐주세요.</p>
+
+<ol>
+  <li>Vertical하게 들어온 값은 오른쪽으로 dp[1][i][j+1]으로 저장</li>
+  <li>Horizontal하게 들어온 값은 밑으로 dp[0][i+1][j]으로 저장</li>
+</ol>
+
+<h3 id="citymap이-1인-경우">CityMap이 1인 경우</h3>
+<p>그냥 CONTINUE<br /></p>
 
 <h3 id="시간-효율성">시간 효율성</h3>
 <p><strong>O(m * n * 2)</strong></p>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-06-04T00:18:41+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">카카오 페스티벌: 사천성</title><link href="http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1.html" rel="alternate" type="text/html" title="카카오 페스티벌: 사천성" /><published>2020-06-04T00:00:00+09:00</published><updated>2020-06-04T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1.html">&lt;h1 id=&quot;핵심개념&quot;&gt;핵심개념&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" /><updated>2020-06-04T16:09:02+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">비움</title><subtitle>수박 겉이 아닌 수박 속에 집중하자.</subtitle><author><name>유정민</name></author><entry><title type="html">카카오 페스티벌: 사천성</title><link href="http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1.html" rel="alternate" type="text/html" title="카카오 페스티벌: 사천성" /><published>2020-06-04T00:00:00+09:00</published><updated>2020-06-04T00:00:00+09:00</updated><id>http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1</id><content type="html" xml:base="http://localhost:4000/coding%20test/kakao%202017/2020/06/04/%EC%82%AC%EC%B2%9C%EC%84%B1.html">&lt;h1 id=&quot;핵심개념&quot;&gt;핵심개념&lt;/h1&gt;
 
 &lt;h1 id=&quot;팁&quot;&gt;팁&lt;/h1&gt;
 
@@ -257,8 +257,37 @@ Array 안에는 아파트의 호실처럼 공간들이 순차적으로 줄지어
 2.DP(dynamic programming)&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;팁&quot;&gt;팁&lt;/h1&gt;
+&lt;p&gt;먼저, 답의 정확성에서 문제가 발생하시면 Modular arithmetic에서 실수가 없었는지 체크바랍니다.&lt;br /&gt;
+여기서 필요한 Modular arithmetic은 A%m = (B%m + C%m)%m 단, m = 20170805 입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;두 번째로, DP의 아이디어가 중요합니다.&lt;br /&gt;
+이 문제는 2 * (m+1) * (n+1) 크기의 DP가 문제 풀기에 용이합니다.&lt;br /&gt;
+각각 +1을 하는 이유는 i == m-1 이나 j == n-1의 경우를 계산할 때 편하게 하기 위함입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;DP에는 (a, b)의 형태로 a: 이전에서 가로 방향으로 온 경우 b: 이전에서 세로 방향으로 온 경우&lt;br /&gt;
+로 나누시고 CityMap을 값을 체크하시면서 DP 값들을 처리하시면 됩니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;그림-설명&quot;&gt;그림 설명&lt;/h1&gt;
+&lt;p&gt;각 DP의 값에는 이전에서 가로방향으로 들어온 경우와 세로 방향 들어온 경우로 나눕니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;citymap이-0인-경우&quot;&gt;CityMap이 0인 경우&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/PS/2017-kakao-festival/hop1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;어떤 방향이든 상관없이 dp[1][i][j+1]으로 저장&lt;/li&gt;
+  &lt;li&gt;어떤 방향이든 상관없이 dp[0][i+1][j]로 저장&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;citymap이-2인-경우&quot;&gt;CityMap이 2인 경우&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/PS/2017-kakao-festival/hop2.png&quot; alt=&quot;image&quot; /&gt;
+※그림에 DP값을 1로 잘못 적었습니다. 1-&amp;gt;2로 생각하시고 봐주세요.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Vertical하게 들어온 값은 오른쪽으로 dp[1][i][j+1]으로 저장&lt;/li&gt;
+  &lt;li&gt;Horizontal하게 들어온 값은 밑으로 dp[0][i+1][j]으로 저장&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;citymap이-1인-경우&quot;&gt;CityMap이 1인 경우&lt;/h3&gt;
+&lt;p&gt;그냥 CONTINUE&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;시간-효율성&quot;&gt;시간 효율성&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;O(m * n * 2)&lt;/strong&gt;&lt;/p&gt;
@@ -367,7 +396,7 @@ ROM과는 다르게, 전원이 꺼지거나 하면 값이 사라지는 volatile 
 &lt;strong&gt;Java:&lt;/strong&gt; java.util.LinkedList가 내부적으로 Linked-list로 되어있습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;직접-구현-코드&quot;&gt;직접 구현 코드&lt;/h1&gt;
-&lt;p&gt;Python: &lt;a href=&quot;https://github.com/Biewoom/ds/blob/master/LinearDs/LinkedList.py&quot;&gt;Github 코드 보러가기&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>유정민</name></author><summary type="html">가장 기본이 되는 Nodes 구조인 Linked-list에 대해서 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/linear/linked-list/back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/linear/linked-list/back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Dynamic Array: Array구조의 기본</title><link href="http://localhost:4000/linear-ds/2020/04/24/Dynamic-array.html" rel="alternate" type="text/html" title="Dynamic Array: Array구조의 기본" /><published>2020-04-24T00:00:00+09:00</published><updated>2020-04-24T00:00:00+09:00</updated><id>http://localhost:4000/linear-ds/2020/04/24/Dynamic-array</id><content type="html" xml:base="http://localhost:4000/linear-ds/2020/04/24/Dynamic-array.html">&lt;h1 id=&quot;dynamic-array의-기능&quot;&gt;Dynamic-Array의 기능&lt;/h1&gt;
+&lt;p&gt;Python: &lt;a href=&quot;https://github.com/Biewoom/ds/blob/master/LinearDs/LinkedList.py&quot;&gt;Github 코드 보러가기&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>유정민</name></author><summary type="html">가장 기본이 되는 Nodes 구조인 Linked-list에 대해서 알아보자.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ds/basic/linked-back.png" /><media:content medium="image" url="http://localhost:4000/assets/images/ds/basic/linked-back.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Dynamic Array: Array구조의 기본</title><link href="http://localhost:4000/linear-ds/2020/04/24/Dynamic-array.html" rel="alternate" type="text/html" title="Dynamic Array: Array구조의 기본" /><published>2020-04-24T00:00:00+09:00</published><updated>2020-04-24T00:00:00+09:00</updated><id>http://localhost:4000/linear-ds/2020/04/24/Dynamic-array</id><content type="html" xml:base="http://localhost:4000/linear-ds/2020/04/24/Dynamic-array.html">&lt;h1 id=&quot;dynamic-array의-기능&quot;&gt;Dynamic-Array의 기능&lt;/h1&gt;
 &lt;p&gt;Dynamic Array는 아래의 기능들을 수행할 수 있어야 합니다.&lt;br /&gt;&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;Initialize&lt;/li&gt;
