@@ -14,6 +14,7 @@
       icon: arrow-right
       url: https://programmers.co.kr/learn/courses/30/lessons/60060
 ---
+출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges<br/>
 
 # 핵심 개념:
 1. [Trie]({% link _posts/datastructure/non-linear/2020-04-14-Trie.md %})

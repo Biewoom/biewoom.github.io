@@ -14,6 +14,7 @@ actions:
     icon: arrow-right
     url: https://programmers.co.kr/learn/courses/30/lessons/1836
 ---
+출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges<br/>
 
 # 핵심개념
 <1> Find 함수 구현<br/>
