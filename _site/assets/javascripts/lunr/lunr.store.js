@@ -84,8 +84,8 @@ var store = [{
         "tags": [],
         "url": "http://localhost:4000/coding%20test/kakao%202017/2020/06/04/fourheaven.html"
       },{
-        "title": "카카오 페스티벌: 사천성",
-        "excerpt":"  출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges ","categories": ["coding test","kakao 2019 blind"],
+        "title": "카카오 블라인드: 무지의 먹방",
+        "excerpt":"  출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges 핵심 개념 팁 그림 설명 Code from heapq import heappush, heappopdef solution(food_times, k):    hq = []    turn_stack = 0; pre_k = last_omit = None    for i in range(len(food_times)):        heappush(hq, [food_times[i], i+1] )    while hq and k &gt;= 0:        omit = heappop(hq)        pre_k = k        turns = omit[0] - turn_stack        k -= (len(hq)+1) * turns        turn_stack += turns        last_omit = omit[1]    if k &lt; 0:        left_foods = sorted( [x[1] for x in hq] + [last_omit] )        move = pre_k % len(left_foods)        return left_foods[move]    else: return -1","categories": ["coding test","kakao 2019 blind"],
         "tags": [],
         "url": "http://localhost:4000/coding%20test/kakao%202019%20blind/2020/06/04/muzi.html"
       }]
